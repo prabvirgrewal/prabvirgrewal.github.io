@@ -4,135 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Prabvir Grewal Portfolio</title>
-<meta name="description" content="Prabvir Grewal: Automation Systems Engineering student at McMaster University. Robotics, circuits, control systems and C++ projects.">
+<meta name="description" content="Prabvir Grewal: Automation Systems Engineering student at McMaster University. Robotics, PLCs, circuits, control systems and C++ projects.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-/* Layout idea: an engineering drawing sheet. Each project is a "spec sheet" with a title block of facts beside the story. */
-:root{
-  --paper:#F3F4F1; --panel:#FFFFFF; --ink:#16212B; --muted:#5A6670; --rule:#D3D8D5; --accent:#D9541A; --accent-ink:#FFFFFF; --grid:rgba(22,33,43,.045);
-  --display:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
-  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
-  color-scheme:light;
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){--paper:#11171D;--panel:#18212A;--ink:#E7ECEF;--muted:#9AA7B1;--rule:#2B3742;--accent:#F06A2C;--accent-ink:#11171D;--grid:rgba(231,236,239,.04);color-scheme:dark}
-}
-:root[data-theme="dark"]{--paper:#11171D;--panel:#18212A;--ink:#E7ECEF;--muted:#9AA7B1;--rule:#2B3742;--accent:#F06A2C;--accent-ink:#11171D;--grid:rgba(231,236,239,.04);color-scheme:dark}
-
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 var(--body);
-  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px}
-a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:3px}
-a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-img{max-width:100%;display:block}
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-h1,h2,h3{font-family:var(--display);line-height:1.08;text-wrap:balance;margin:0}
-.tag{font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-
-/* nav */
-nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--rule)}
-nav .wrap{display:flex;gap:20px;align-items:center;justify-content:space-between;height:56px}
-nav .me{font:600 20px/1 var(--display);letter-spacing:.02em;text-decoration:none}
-nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0;font:500 13px/1 var(--mono);text-transform:uppercase;letter-spacing:.05em}
-nav ul a{text-decoration:none;color:var(--muted)} nav ul a:hover{color:var(--ink)}
-@media (max-width:640px){nav ul{display:none}}
-
-/* hero */
-header.hero{padding:64px 0 40px}
-.hero-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:40px;align-items:end}
-.hero h1{font-size:clamp(44px,7vw,80px);font-weight:700;letter-spacing:-.01em}
-.hero h1 span{color:var(--accent)}
-.hero p.lede{font-size:19px;max-width:34em;margin:18px 0 26px;color:var(--ink)}
-.btns{display:flex;flex-wrap:wrap;gap:10px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border:1.5px solid var(--ink);font:500 14px/1 var(--mono);text-decoration:none;background:var(--panel)}
-.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-.btn:hover{transform:translateY(-1px)}
-.titleblock{border:1.5px solid var(--ink);background:var(--panel);font:13px/1.4 var(--mono)}
-.titleblock div{display:grid;grid-template-columns:110px 1fr;border-bottom:1px solid var(--rule)}
-.titleblock div:last-child{border-bottom:0}
-.titleblock dt,.titleblock dd{margin:0;padding:9px 12px}
-.titleblock dt{color:var(--muted);border-right:1px solid var(--rule);text-transform:uppercase;font-size:11px;letter-spacing:.06em;align-self:center}
-@media (max-width:820px){.hero-grid{grid-template-columns:1fr}}
-
-/* sections */
-section{padding:48px 0;border-top:1px solid var(--rule)}
-.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px}
-.sec-head h2{font-size:38px;font-weight:700}
-.sec-head .tag{color:var(--accent)}
-
-/* project sheets */
-.sheet{background:var(--panel);border:1.5px solid var(--ink);margin-bottom:28px}
-.sheet-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 20px;padding:16px 20px;border-bottom:1.5px solid var(--ink)}
-.sheet-top h3{font-size:30px;font-weight:600}
-.sheet-top .meta{font:13px/1.5 var(--mono);color:var(--muted);text-align:right}
-.pill{display:inline-block;padding:4px 8px;border:1px solid currentColor;font:500 11px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;margin-left:6px;vertical-align:2px}
-.pill.done{color:#2F7D4F} .pill.wip{color:var(--accent)} .pill.plan{color:var(--muted)}
-.sheet-body{display:grid;grid-template-columns:1.35fr 1fr}
-.sheet-body .story{padding:20px;border-right:1px solid var(--rule)}
-.sheet-body .specs{padding:20px}
-.story p{margin:0 0 12px;max-width:62ch}
-.story ul{margin:0 0 12px;padding-left:20px} .story li{margin-bottom:6px}
-.specs dl{margin:0;font-size:14px}
-.specs dt{font:500 11px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:14px 0 5px}
-.specs dt:first-child{margin-top:0}
-.specs dd{margin:0}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chips span{font:12px/1 var(--mono);padding:5px 7px;background:var(--paper);border:1px solid var(--rule)}
-.stat{font:700 34px/1 var(--display);color:var(--accent);font-variant-numeric:tabular-nums}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:4px 0 16px}
-.stats div{border-left:3px solid var(--accent);padding-left:10px}
-.stats small{display:block;font-size:13px;color:var(--muted);line-height:1.3;margin-top:4px}
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--rule);border-top:1.5px solid var(--ink)}
-.gallery figure{margin:0;background:var(--panel)}
-.gallery img{width:100%;height:240px;object-fit:cover}
-.gallery figcaption{font:12px/1.4 var(--mono);color:var(--muted);padding:8px 10px}
-.iter{width:100%;border-collapse:collapse;font-size:14px;margin:6px 0 14px}
-.iter th,.iter td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
-.iter th{font:500 11px/1.2 var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
-.tablebox{overflow-x:auto}
-@media (max-width:820px){.sheet-body{grid-template-columns:1fr}.sheet-body .story{border-right:0;border-bottom:1px solid var(--rule)}.sheet-top .meta{text-align:left}.stats{grid-template-columns:1fr 1fr}}
-
-/* small cards */
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-@media (max-width:820px){.grid2{grid-template-columns:1fr}}
-.card{background:var(--panel);border:1px solid var(--rule);padding:20px}
-.card h3{font-size:24px;font-weight:600;margin-bottom:6px}
-.card p{margin:8px 0 0}
-.card.next{border:1.5px dashed var(--accent)}
-
-/* skills */
-.skills{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
-@media (max-width:820px){.skills{grid-template-columns:1fr 1fr}}
-.skills h3{font:500 12px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:10px}
-.skills ul{list-style:none;margin:0;padding:0}
-.skills li{padding:6px 0;border-bottom:1px solid var(--rule)}
-
-/* timeline */
-.tl{list-style:none;margin:0;padding:0}
-.tl li{display:grid;grid-template-columns:170px 1fr;gap:20px;padding:16px 0;border-bottom:1px solid var(--rule)}
-.tl .when{font:13px/1.5 var(--mono);color:var(--muted)}
-.tl h3{font-size:22px;font-weight:600}
-.tl p{margin:4px 0 0;max-width:62ch}
-@media (max-width:640px){.tl li{grid-template-columns:1fr;gap:4px}}
-
-footer{border-top:1.5px solid var(--ink);padding:36px 0 60px}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px}
-footer h2{font-size:34px}
-footer p{margin:6px 0 0;font:14px/1.6 var(--mono)}
-</style>
+<link rel="stylesheet" href="css/site.css">
 </head>
 <body>
 
-<nav aria-label="Main">
+<nav class="top" aria-label="Main">
   <div class="wrap">
     <a class="me" href="#top">PRABVIR GREWAL</a>
     <ul>
+      <li><a href="#about">About</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#leadership">Leadership</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -148,8 +35,9 @@ footer p{margin:6px 0 0;font:14px/1.6 var(--mono)}
       <p class="lede">I'm a second-year Automation Systems Engineering student in Hamilton. I captained a VEX robotics team to the 2023 VEX World Championship in Dallas, and I like the part of engineering where code meets hardware.</p>
       <div class="btns">
         <a class="btn primary" href="#projects">See projects</a>
+        <a class="btn" href="Prabvir_Grewal_Resume.pdf">Download resume (PDF)</a>
         <a class="btn" href="https://www.linkedin.com/in/prabvirgrewal">LinkedIn</a>
-        <a class="btn" href="#contact">Contact</a>
+        <a class="btn" href="https://github.com/prabvirgrewal">GitHub</a>
       </div>
     </div>
     <dl class="titleblock" aria-label="Quick facts">
@@ -162,218 +50,150 @@ footer p{margin:6px 0 0;font:14px/1.6 var(--mono)}
   </div>
 </header>
 
+<div class="band" aria-label="Highlights">
+  <div class="wrap">
+    <div class="cell"><span class="stat">Worlds</span><small>2023 VEX Robotics World Championship, Dallas</small></div>
+    <div class="cell"><span class="stat">11th</span><small>in our division at Worlds</small></div>
+    <div class="cell"><span class="stat">11/71</span><small>Ontario teams in VEX skills</small></div>
+    <div class="cell"><span class="stat">4</span><small>robot redesigns in one season</small></div>
+    <div class="cell"><span class="stat">3</span><small>seasons refereeing VEX IQ</small></div>
+  </div>
+</div>
+
 <main>
+<section id="about" class="first">
+  <div class="wrap">
+    <div class="sec-head"><span class="tag">01</span><h2>About</h2></div>
+    <div class="about">
+      <div>
+        <p class="lead-p">I got into engineering through robotics. Before I joined a team I was already building things out of metal and wood, and VEX gave me a place to turn that into real machines.</p>
+        <p>As captain and head builder of VEX Team 1104V, I took a robot that was slow and clunky at our first event and led a full rebuild, all the way to the World Championship. Along the way I learned that most matches are won by planning, testing and attention to detail, not just clever design.</p>
+        <p>At McMaster I'm studying PLC programming, instrumentation and control, electronics and CAD. Outside class I build Arduino projects, referee VEX IQ for younger students, and help run events for student clubs. My goal is to work on automation and robotics at companies like Tesla and Apple.</p>
+      </div>
+      <ul>
+        <li><b>Controls and PLCs</b>Coursework in PLC programming, instrumentation, PID control and electronics</li>
+        <li><b>Hands-on in the shop</b>Laser cutter, CNC, drill press and 3D printing from high school manufacturing</li>
+        <li><b>Robotics leadership</b>VEX captain, FRC mechanical co-lead, and VEX IQ referee</li>
+        <li><b>Clear communicator</b>Taught robotics and tutored math for students of all levels</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <section id="projects">
   <div class="wrap">
-    <div class="sec-head"><span class="tag">01</span><h2>Projects</h2></div>
-
-    <!-- VEX -->
-    <article class="sheet" id="vex-robot">
-      <div class="sheet-top">
-        <h3>VEX Spin Up Competition Robot <span class="pill done">Competed</span></h3>
-        <div class="meta">Team 1104V · 2022 – 2023 season<br>Team captain · Head builder · Programmer</div>
-      </div>
-      <div class="sheet-body">
-        <div class="story">
-          <div class="stats">
-            <div><span class="stat">Worlds</span><small>competed at the 2023 VEX World Championship, Dallas</small></div>
-            <div><span class="stat">11th</span><small>in our division at Worlds</small></div>
-            <div><span class="stat">11th</span><small>of 71 Ontario teams in skills</small></div>
-            <div><span class="stat">4</span><small>design iterations in one season</small></div>
-          </div>
-          <p>Spin Up asked robots to shoot foam discs into goals, turn field rollers, and expand at the end of the match. I led a team of four through the full design cycle, from first CAD to the Ontario Provincial Championship and then the VEX World Championship in Dallas, the largest robotics competition in the world, where we placed 11th in our division.</p>
-          <div class="tablebox">
-          <table class="iter">
-            <thead><tr><th>Subsystem</th><th>First version</th><th>What we changed and why</th></tr></thead>
-            <tbody>
-              <tr><td>Drive</td><td>4-motor</td><td>6-motor drive (4 omni + 2 traction wheels) for more pushing power and speed</td></tr>
-              <tr><td>Shooter</td><td>Curved, 1 disc at a time</td><td>Straight flywheel shooter with a motorized indexer that fires 3 discs back to back</td></tr>
-              <tr><td>Flywheel control</td><td>Fixed voltage, RPM dropped after each shot</td><td>Closed-loop speed control using motor encoders so RPM recovers between shots</td></tr>
-              <tr><td>Expansion</td><td>Motorized, not enough torque</td><td>Pneumatic expansion that covers more tiles</td></tr>
-              <tr><td>Rollers</td><td>Fast but weak</td><td>Raised the sprocket ratio for more torque</td></tr>
-            </tbody>
-          </table>
-          </div>
-          <p>We documented every meeting in a 141-page engineering notebook using the SPICE design process. Off the field, we ran a Girl Powered STEM event with a local library to get more students into robotics.</p>
+    <div class="sec-head"><span class="tag">02</span><h2>Featured projects</h2></div>
+    <p class="lead-p" style="margin-bottom:24px">Each project has a full case study with the design process, code, results and what I learned.</p>
+    <div class="cards">
+      <article class="pcard">
+        <img src="img/vex-worlds-1.jpg" alt="VEX Spin Up robot with flywheel shooter" loading="lazy">
+        <div class="body">
+          <p class="tag">VEX Robotics · 2022 – 2023 <span class="pill done">Worlds</span></p>
+          <h3>VEX Spin Up Competition Robot</h3>
+          <p>Led a 4-person team from 8th place at our first event, through a full rebuild, to the 2023 VEX World Championship, where we placed 11th in our division.</p>
+          <div class="chips"><span>C++</span><span>PROS</span><span>Flywheel control</span><span>Pneumatics</span><span>Inventor</span></div>
+          <a class="more" href="projects/vex-spin-up.html">Read the case study →</a>
         </div>
-        <div class="specs">
-          <dl>
-            <dt>My role</dt><dd>Team captain, head builder and programmer on a 4-person team</dd>
-            <dt>Tools</dt><dd><div class="chips"><span>C++</span><span>PROS</span><span>VEX V5</span><span>Autodesk Inventor</span><span>Pneumatics</span></div></dd>
-            <dt>Sensors</dt><dd>Motor encoders, inertial (gyro) sensor, line tracker</dd>
-            <dt>Control</dt><dd>Flywheel speed control, PID drive for autonomous</dd>
-            <dt>Code</dt><dd><a href="https://github.com/prabvirgrewal/vex-spin-up-robot">github.com/prabvirgrewal/vex-spin-up-robot</a></dd>
-            <dt>Results</dt><dd>2023 VEX Worlds, 11th in division · Ontario Provincials · consistent quarterfinalist</dd>
-            <dt>Recognition</dt><dd>Certificate of Recognition from the MPP for Brampton East (Mar. 2023)</dd>
-          </dl>
-        </div>
-      </div>
-      <div class="gallery">
-        <figure><img src="img/vex-worlds-1.jpg" alt="Worlds robot with flywheel shooter and chain-driven intake" loading="lazy"><figcaption>Worlds robot: flywheel shooter and intake</figcaption></figure>
-        <figure><img src="img/vex-worlds-2.jpg" alt="Worlds robot from the side showing the drivetrain and pneumatics" loading="lazy"><figcaption>Worlds robot: drivetrain and pneumatics</figcaption></figure>
-        <figure><img src="img/vex-worlds-3.jpg" alt="Worlds robot from the rear" loading="lazy"><figcaption>Worlds robot: rear view</figcaption></figure>
-        <figure><img src="img/vex-prov-1.jpg" alt="Provincials robot on the field with yellow discs" loading="lazy"><figcaption>Provincials robot on the field</figcaption></figure>
-        <figure><img src="img/vex-prov-2.jpg" alt="Provincials robot with the 1104V team plate" loading="lazy"><figcaption>Provincials robot, Team 1104V</figcaption></figure>
-        <figure><img src="img/worlds-medal.jpg" alt="2023 VEX Robotics World Championship medal and badge" loading="lazy"><figcaption>2023 VEX World Championship medal</figcaption></figure>
-        <figure><img src="img/certificate.jpg" alt="Certificate of Recognition from the Member of Provincial Parliament for Brampton East" loading="lazy"><figcaption>Certificate of Recognition, Mar. 2023</figcaption></figure>
-        <figure><img src="img/vex-cad-flywheel.jpg" alt="CAD render of the robot with flywheel shooter and drive" loading="lazy"><figcaption>CAD: flywheel shooter on the drive base</figcaption></figure>
-        <figure><img src="img/vex-cad-drive.jpg" alt="CAD render of the drivetrain with omni wheels" loading="lazy"><figcaption>CAD: drivetrain</figcaption></figure>
-      </div>
-    </article>
-
-    <!-- FRC -->
-    <article class="sheet" id="frc">
-      <div class="sheet-top">
-        <h3>FRC Rapid React Robot <span class="pill done">Competed</span></h3>
-        <div class="meta">FIRST Robotics Competition · 2021 – 2023<br>Mechanical Co-Lead (1 of 3)</div>
-      </div>
-      <div class="sheet-body">
-        <div class="story">
-          <p>A full-size FIRST Robotics Competition robot for the 2022 game, Rapid React, where robots collect and shoot cargo balls and climb a hangar at the end of the match. As one of three mechanical leads, I helped build the robot's mechanisms, and we competed at the 2022 Ontario District St. Mary event in Hamilton.</p>
-        </div>
-        <div class="specs">
-          <dl>
-            <dt>My role</dt><dd>Mechanical co-lead</dd>
-            <dt>Robot</dt><dd><div class="chips"><span>Aluminum chassis</span><span>Ball intake</span><span>Shooter</span><span>Climbing hooks</span></div></dd>
-          </dl>
-        </div>
-      </div>
-      <div class="gallery">
-        <figure><img src="img/frc-1.jpg" alt="FRC robot with red intake and climbing hooks" loading="lazy"><figcaption>Intake, shooter and climber</figcaption></figure>
-        <figure><img src="img/frc-2.jpg" alt="FRC robot from the front showing the intake and frame" loading="lazy"><figcaption>Front view</figcaption></figure>
-      </div>
-    </article>
-
-    <!-- Hotel -->
-    <article class="sheet" id="hotel-system">
-      <div class="sheet-top">
-        <h3>Hotel Reservation Management System <span class="pill done">Built</span></h3>
-        <div class="meta">McMaster University · ENGTECH 1PR3 · Team of 3<br>C++ object-oriented programming</div>
-      </div>
-      <div class="sheet-body">
-        <div class="story">
-          <p>A C++ console application that runs bookings for a 12-room hotel with 5 room types. Guests pick dates, see which rooms are free each night of their stay, book, and get a booking ID and total price. Every booking is saved to a file and loaded on the next run.</p>
-          <ul>
-            <li>Wrote date logic with <code>&lt;ctime&gt;</code>: leap years, nights between dates, and no check-ins in the past</li>
-            <li>Detects date-range overlaps, so the same room can be booked by different guests on different dates</li>
-            <li>Split the design into <code>Room</code>, <code>Customer</code>, <code>Date</code> and <code>Reservation</code>, run by a <code>ReservationManager</code></li>
-          </ul>
-        </div>
-        <div class="specs">
-          <dl>
-            <dt>Language</dt><dd><div class="chips"><span>C++17</span><span>OOP</span><span>std::vector</span><span>File I/O</span></div></dd>
-            <dt>Features</dt><dd>Book (1–14 nights), cancel by booking ID, day-by-day availability, search by room type, persistent storage</dd>
-            <dt>Code</dt><dd><a href="https://github.com/prabvirgrewal/hotel-reservation-system">github.com/prabvirgrewal/hotel-reservation-system</a></dd>
-          </dl>
-        </div>
-      </div>
-    </article>
-
-    <!-- Solar -->
-    <article class="sheet" id="solar">
-      <div class="sheet-top">
-        <h3>Solar-Tracking Phone Charger <span class="pill done">Built</span></h3>
-        <div class="meta">Computer Engineering (TEJ4M) · 2024<br>Arduino · C++ · Laser-cut chassis</div>
-      </div>
-      <div class="sheet-body">
-        <div class="story">
-          <p>An Arduino station that follows the sun and uses a solar panel to charge a phone. Four light sensors compare brightness from different directions, and two servos pan and tilt the panel toward the brightest side.</p>
-          <ul>
-            <li>Built a two-level laser-cut wood chassis with brass standoffs to mount the panel, servos, sensors and electronics</li>
-            <li>Added temperature and humidity sensing, a buzzer, a push button and a 16x2 LCD readout</li>
-            <li>Planned the build from a full proposal: parts list, pictorial and schematic diagrams, and a build timeline</li>
-          </ul>
-        </div>
-        <div class="specs">
-          <dl>
-            <dt>Parts</dt><dd><div class="chips"><span>Arduino</span><span>Solar panel</span><span>2x servos</span><span>4x light sensors</span><span>DHT11</span><span>16x2 LCD</span><span>AA battery pack</span></div></dd>
-            <dt>Fabrication</dt><dd>Laser-cut wood plates, brass standoffs</dd>
-          </dl>
-        </div>
-      </div>
-      <div class="gallery">
-        <figure><img src="img/solar-1.jpg" alt="Solar tracker with panel, sensor modules, LCD and AA battery pack" loading="lazy"><figcaption>Panel, sensors, LCD and battery pack</figcaption></figure>
-        <figure><img src="img/solar-2.jpg" alt="Close-up of the laser-cut wood chassis with sensor modules and wiring" loading="lazy"><figcaption>Laser-cut chassis and sensor wiring</figcaption></figure>
-      </div>
-    </article>
-
-    <!-- Line follower -->
-    <article class="sheet" id="line-follower">
-      <div class="sheet-top">
-        <h3>Line-Following Robot with Obstacle Avoidance <span class="pill done">Built</span></h3>
-        <div class="meta">Computer Engineering · Solo project · 2025<br>Arduino Uno · C++ · 4WD</div>
-      </div>
-      <div class="sheet-body">
-        <div class="story">
-          <p>A 4-wheel-drive robot that follows black tape on the floor and drives around obstacles on its path, then finds the line again and finishes its route.</p>
-          <ul>
-            <li>Two IR sensors under the front bumper steer the robot back over the tape</li>
-            <li>An HC-SR04 ultrasonic sensor on a servo spots obstacles, looks left and right, and picks the side with more room</li>
-            <li>An L293D motor shield drives 4 DC gear motors with PWM speed control</li>
-            <li>Calibrated the IR sensors for consistent tracking and split the code into reusable functions for driving, sensing and avoiding</li>
-          </ul>
-        </div>
-        <div class="specs">
-          <dl>
-            <dt>Parts</dt><dd><div class="chips"><span>Arduino Uno</span><span>L293D shield</span><span>4x DC motors</span><span>2x IR sensors</span><span>HC-SR04</span><span>SG90 servo</span></div></dd>
-            <dt>Code</dt><dd>State machine: follow line → avoid obstacle → find line. <a href="https://github.com/prabvirgrewal/line-following-robot">github.com/prabvirgrewal/line-following-robot</a></dd>
-            <dt>Chassis</dt><dd>3D-printed red base with a printed orange sensor mount</dd>
-          </dl>
-        </div>
-      </div>
-      <div class="gallery">
-        <figure><img src="img/line-1.jpg" alt="Front of the line-following robot with ultrasonic sensor and IR sensors" loading="lazy"><figcaption>Ultrasonic sensor and IR line sensors</figcaption></figure>
-        <figure><img src="img/line-2.jpg" alt="Top of the robot showing the Arduino and motor shield" loading="lazy"><figcaption>Arduino and motor shield</figcaption></figure>
-        <figure><img src="img/line-3.jpg" alt="Underside of the robot showing four DC gear motors" loading="lazy"><figcaption>Underside: 4 DC gear motors</figcaption></figure>
-        <figure><img src="img/line-diagram.jpg" alt="Wiring diagram with Arduino, four motors, servo, ultrasonic sensor and two IR sensors" loading="lazy"><figcaption>Wiring diagram</figcaption></figure>
-      </div>
-    </article>
-
-    <!-- Arduino -->
-    <article class="sheet" id="arduino">
-      <div class="sheet-top">
-        <h3>Arduino Circuit Builds <span class="pill done">Built</span></h3>
-        <div class="meta">Breadboard prototyping<br>Arduino Uno · C++</div>
-      </div>
-      <div class="sheet-body">
-        <div class="story">
-          <p>A series of microcontroller circuits I wired and programmed, each one adding a new input or output: digital inputs, analog reads, PWM and servo control.</p>
-          <ul>
-            <li>Push-button input driving LEDs, then a multi-button LED game</li>
-            <li>Potentiometer read on an analog pin to dim an LED and change a buzzer's tone</li>
-            <li>Potentiometer-controlled servo, mapping a 0–1023 analog reading to a servo angle</li>
-          </ul>
-        </div>
-        <div class="specs">
-          <dl>
-            <dt>Concepts</dt><dd>Digital I/O, analogRead, PWM, servo control, pull-down resistors</dd>
-            <dt>Parts</dt><dd><div class="chips"><span>Arduino Uno</span><span>Breadboard</span><span>Potentiometer</span><span>Servo</span><span>Buzzer</span><span>LEDs</span></div></dd>
-          </dl>
-        </div>
-      </div>
-      <div class="gallery">
-        <figure><img src="img/arduino-servo.jpg" alt="Arduino with a servo controlled by a potentiometer" loading="lazy"><figcaption>Potentiometer → servo angle</figcaption></figure>
-        <figure><img src="img/arduino-buttons.jpg" alt="Breadboard with four colored push buttons and LEDs" loading="lazy"><figcaption>Multi-button LED game</figcaption></figure>
-        <figure><img src="img/arduino-pot.jpg" alt="Breadboard with a potentiometer dimming an LED" loading="lazy"><figcaption>Analog input dimming an LED</figcaption></figure>
-        <figure><img src="img/arduino-buzzer.jpg" alt="Breadboard with a potentiometer and buzzer" loading="lazy"><figcaption>Potentiometer + buzzer</figcaption></figure>
-      </div>
-    </article>
-
-    <div class="grid2">
-      
-      
-      <article class="card next" id="next">
-        <p class="tag">Next build <span class="pill wip">In progress</span></p>
-        <h3>PID Control Projects</h3>
-        <p>Coming soon: an interactive PID controller simulator and a hardware build using what I'm learning in Instrumentation &amp; Control and PLC Programming at McMaster.</p>
       </article>
+      <article class="pcard">
+        <img src="img/line-1.jpg" alt="Line-following robot with ultrasonic sensor" loading="lazy">
+        <div class="body">
+          <p class="tag">Arduino · Solo · 2025 <span class="pill done">Built</span></p>
+          <h3>Line-Following Robot</h3>
+          <p>A 4WD robot that follows a tape route with IR sensors, spots obstacles with a servo-mounted ultrasonic sensor, drives around them and finds the line again.</p>
+          <div class="chips"><span>Arduino</span><span>C++</span><span>State machine</span><span>L293D</span><span>Sensors</span></div>
+          <a class="more" href="projects/line-follower.html">Read the case study →</a>
+        </div>
+      </article>
+      <article class="pcard">
+        <img src="img/solar-1.jpg" alt="Solar-tracking phone charger" loading="lazy">
+        <div class="body">
+          <p class="tag">Computer Engineering · 2024 <span class="pill done">Built</span></p>
+          <h3>Solar-Tracking Phone Charger</h3>
+          <p>An Arduino station that uses 4 light sensors and 2 servos to keep a solar panel facing the sun, then charges a phone. Laser-cut chassis, LCD and environment sensors.</p>
+          <div class="chips"><span>Arduino</span><span>Servos</span><span>Laser cutting</span><span>Power</span></div>
+          <a class="more" href="projects/solar-tracker.html">Read the case study →</a>
+        </div>
+      </article>
+      <article class="pcard">
+        <div class="body">
+          <p class="tag">McMaster · ENGTECH 1PR3 · Team of 3 <span class="pill done">Built</span></p>
+          <h3>Hotel Reservation System</h3>
+          <p>A C++ console app that books, cancels and searches 12 rooms across 5 types. It checks every night of a stay for overlapping bookings and saves all data to a file.</p>
+<pre class="code" style="margin:4px 0 6px"><span class="c">// two stays overlap if each starts before the other ends</span>
+return in(a) &lt; out(b) &amp;&amp; in(b) &lt; out(a);</pre>
+          <div class="chips"><span>C++17</span><span>OOP</span><span>File I/O</span><span>Date math</span></div>
+          <a class="more" href="projects/hotel-system.html">Read the case study →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="more">
+  <div class="wrap">
+    <div class="sec-head"><span class="tag">03</span><h2>More builds</h2></div>
+
+    <h3 style="font-size:26px;margin-bottom:6px">FRC Rapid React Robot <span class="pill done">Competed</span></h3>
+    <p class="tag" style="margin-bottom:12px">FIRST Robotics Competition · 2021 – 2023 · Mechanical co-lead (1 of 3)</p>
+    <p style="max-width:68ch">One of three mechanical leads on a FIRST Robotics Competition team. For the 2022 game, Rapid React, the robot collected and shot cargo balls and climbed a hangar at the end of each match. We competed at the 2022 Ontario District St. Mary event in Hamilton.</p>
+    <div class="gallery" style="margin-bottom:40px">
+      <figure><img src="img/frc-1.jpg" alt="FRC robot with red intake and climbing hooks" loading="lazy"><figcaption>Intake, shooter and climber</figcaption></figure>
+      <figure><img src="img/frc-2.jpg" alt="FRC robot from the front" loading="lazy"><figcaption>Front view</figcaption></figure>
+    </div>
+
+    <h3 style="font-size:26px;margin-bottom:6px">Arduino Circuit Builds <span class="pill done">Built</span></h3>
+    <p class="tag" style="margin-bottom:12px">Breadboard prototyping · Arduino Uno · C++</p>
+    <p style="max-width:68ch">A series of microcontroller circuits, each adding a new input or output: digital inputs, analog reads, PWM and servo control.</p>
+    <div class="gallery tall" style="margin-bottom:40px">
+      <figure><video src="media/arduino-servo.mp4" autoplay muted loop playsinline aria-label="Potentiometer turning a servo"></video><figcaption>Potentiometer → servo angle (analog in, PWM out)</figcaption></figure>
+      <figure><video src="media/arduino-buttons.mp4" autoplay muted loop playsinline aria-label="Four push buttons lighting LEDs"></video><figcaption>Multi-button LED game (digital inputs)</figcaption></figure>
+      <figure><video src="media/arduino-dimmer.mp4" autoplay muted loop playsinline aria-label="Potentiometer dimming an LED"></video><figcaption>LED dimmer (analogRead → PWM)</figcaption></figure>
+      <figure><video src="media/arduino-buzzer.mp4" autoplay muted loop playsinline aria-label="Potentiometer changing a buzzer tone"></video><figcaption>Potentiometer-controlled buzzer</figcaption></figure>
+    </div>
+
+    <div class="card next">
+      <p class="tag">Next build <span class="pill wip">In progress</span></p>
+      <h3>PID Control Projects</h3>
+      <p>An interactive PID controller simulator and an Arduino temperature and fan controller, using what I'm learning in Instrumentation &amp; Control and PLC Programming at McMaster.</p>
+    </div>
+  </div>
+</section>
+
+<section id="awards">
+  <div class="wrap">
+    <div class="sec-head"><span class="tag">04</span><h2>Awards &amp; recognition</h2></div>
+    <div class="grid2" style="margin-bottom:20px">
+      <figure class="wide" style="margin:0"><img src="img/worlds-medal.jpg" alt="2023 VEX Robotics World Championship medal and badge" loading="lazy" style="max-height:380px;object-fit:cover"><figcaption>2023 VEX Robotics World Championship medal</figcaption></figure>
+      <figure class="wide" style="margin:0"><img src="img/certificate.jpg" alt="Certificate of Recognition from the MPP for Brampton East" loading="lazy" style="max-height:380px;object-fit:cover"><figcaption>Certificate of Recognition, March 2023</figcaption></figure>
+    </div>
+    <ul class="tl">
+      <li><div class="when">Apr 2023</div><div><h3>VEX Robotics World Championship, 11th in division</h3><p>Competed with Team 1104V in Dallas, at the largest robotics competition in the world.</p></div></li>
+      <li><div class="when">Mar 2023</div><div><h3>Certificate of Recognition, MPP for Brampton East</h3><p>For our Brampton Robotics team's VEX quarterfinal results and for advancing to the World Championship.</p></div></li>
+      <li><div class="when">Mar 2023</div><div><h3>Ontario Provincial Championship qualifier</h3><p>Qualified through the top 10 in Ontario skills and finished 11th of 71 Ontario teams in skills.</p></div></li>
+      <li><div class="when">2025</div><div><h3>Award of Excellence, McMaster University</h3></div></li>
+      <li><div class="when">2025</div><div><h3>WHSC Student Scholarship Award</h3></div></li>
+    </ul>
+  </div>
+</section>
+
+<section id="leadership">
+  <div class="wrap">
+    <div class="sec-head"><span class="tag">05</span><h2>Leadership &amp; community</h2></div>
+    <div class="grid3">
+      <div class="card"><p class="tag">2023 – 2025 · Volunteer</p><h3>VEX IQ Referee</h3><p>Refereed elementary and middle school matches for three seasons and three games (Slapshot, Full Volume and Rapid Relay) at local tournaments and the provincial championship.</p></div>
+      <div class="card"><p class="tag">Feb – Dec 2024</p><h3>STEM Mentor, Brampton Robotics</h3><p>Taught students to build and program VEX and LEGO robots in C++ through hands-on design challenges.</p></div>
+      <div class="card"><p class="tag">2022 – 2023</p><h3>Girl Powered Outreach</h3><p>With my VEX team, ran a Girl Powered robotics event with a local library to make STEM more accessible.</p></div>
+      <div class="card"><p class="tag">McMaster</p><h3>Events Executive Rep, McMaster School of Bhangra</h3><p>Part of the events team for McMaster's bhangra club.</p></div>
+      <div class="card"><p class="tag">Sep 2025 – Apr 2026</p><h3>First-Year Rep, McMaster Punjabi Association</h3><p>Represented first-year students, gathered feedback and shared it with the executive team.</p></div>
+      <div class="card"><p class="tag">2021 – 2023</p><h3>FRC Mechanical Co-Lead</h3><p>One of three mechanical leads on a FIRST Robotics Competition team.</p></div>
     </div>
   </div>
 </section>
 
 <section id="skills">
   <div class="wrap">
-    <div class="sec-head"><span class="tag">02</span><h2>Skills</h2></div>
+    <div class="sec-head"><span class="tag">06</span><h2>Skills</h2></div>
     <div class="skills">
       <div><h3>Programming</h3><ul><li>C++</li><li>Python</li><li>PLC ladder logic</li><li>Arduino</li></ul></div>
       <div><h3>Software</h3><ul><li>AutoCAD</li><li>SolidWorks</li><li>Autodesk Inventor</li><li>MATLAB</li><li>Multisim</li><li>Excel</li></ul></div>
@@ -386,15 +206,13 @@ footer p{margin:6px 0 0;font:14px/1.6 var(--mono)}
 
 <section id="experience">
   <div class="wrap">
-    <div class="sec-head"><span class="tag">03</span><h2>Experience</h2></div>
+    <div class="sec-head"><span class="tag">07</span><h2>Experience &amp; education</h2></div>
     <ul class="tl">
       <li><div class="when">2025 – present</div><div><h3>McMaster University</h3><p>BTech, Automation Systems Engineering Technology. Courses include PLC Programming, Instrumentation &amp; Control, Electricity &amp; Electronics II, CAD for Design, Systems Engineering Fundamentals and Object-Oriented Programming.</p></div></li>
       <li><div class="when">May – Aug 2026</div><div><h3>Sales Associate Team Lead, Seasonal · Canadian Tire</h3><p>Organized the seasonal team and assigned daily tasks, while also serving customers on the sales floor.</p></div></li>
-      <li><div class="when">McMaster</div><div><h3>Events Executive Representative · McMaster School of Bhangra</h3><p>Part of the events team for McMaster's bhangra club.</p></div></li>
-      <li><div class="when">Sep 2025 – Apr 2026</div><div><h3>First-Year Grade Representative · McMaster Punjabi Association</h3><p>Represented first-year students, gathered feedback and shared it with the executive team.</p></div></li>
-      <li><div class="when">2023 – 2025 · Volunteer</div><div><h3>Referee · VEX IQ Robotics Competitions</h3><p>Refereed elementary and middle school matches for three seasons and three games (Slapshot, Full Volume and Rapid Relay) at local tournaments and the provincial championship.</p></div></li>
       <li><div class="when">Feb – Dec 2024</div><div><h3>STEM Mentor &amp; Instructor · Brampton Robotics</h3><p>Taught students to build and program VEX and LEGO robots in C++, and coached them through design challenges.</p></div></li>
       <li><div class="when">Nov 2023 – Dec 2024</div><div><h3>Math Tutor Intern · MathSKape (Non-Profit)</h3><p>Tutored students across Ontario in math, with lessons tailored to different learning styles and grade levels.</p></div></li>
+      <li><div class="when">2021 – 2025</div><div><h3>Chinguacousy Secondary School</h3><p>High School Diploma with Honours, Regional SciTech Program. Took manufacturing and computer engineering.</p></div></li>
     </ul>
   </div>
 </section>
@@ -405,6 +223,7 @@ footer p{margin:6px 0 0;font:14px/1.6 var(--mono)}
     <div>
       <h2>Let's talk.</h2>
       <p>Looking for a co-op or summer role in automation, controls or manufacturing.</p>
+      <div class="btns" style="margin-top:14px"><a class="btn primary" href="Prabvir_Grewal_Resume.pdf">Download resume (PDF)</a></div>
     </div>
     <div>
       <p>Email: <a href="mailto:grewalprabvir@gmail.com">grewalprabvir@gmail.com</a></p>
