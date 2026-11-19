@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VEX Spin Up Robot Case Study</title>
+<meta name="description" content="How Team 1104V designed, rebuilt and programmed a VEX Spin Up robot that made the 2023 VEX World Championship.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+<nav class="top" aria-label="Main">
+  <div class="wrap">
+    <a class="me" href="../index.html">PRABVIR GREWAL</a>
+    <ul>
+      <li><a href="../index.html#projects" aria-current="page">Projects</a></li>
+      <li><a href="../index.html#awards">Awards</a></li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="cs-hero">
+  <div class="wrap">
+    <a class="crumb" href="../index.html#projects">← All projects</a>
+    <p class="tag">Case study · VEX Robotics Competition · 2022 – 2023</p>
+    <h1>From 8th at our first event to the VEX World Championship</h1>
+    <p class="sub">How Team 1104V designed, scrapped, rebuilt and programmed a Spin Up robot in one season, and what each failure taught us. I was team captain, head builder and a programmer.</p>
+    <dl class="specbox">
+      <div><dt>Result</dt><dd>2023 VEX Worlds, Dallas · 11th in division</dd></div>
+      <div><dt>Ontario skills</dt><dd>11th of 71 teams</dd></div>
+      <div><dt>My role</dt><dd>Captain · head builder · programmer</dd></div>
+      <div><dt>Tools</dt><dd>C++ (VEXcode, PROS) · Inventor · pneumatics</dd></div>
+    </dl>
+    <div class="btns">
+      <a class="btn primary" href="https://github.com/prabvirgrewal/vex-spin-up-robot">View the code on GitHub</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="cs-layout">
+    <aside class="toc" aria-label="On this page">
+      <p>On this page</p>
+      <ol>
+        <li><a href="#challenge">The challenge</a></li>
+        <li><a href="#team">Team and process</a></li>
+        <li><a href="#season">Season timeline</a></li>
+        <li><a href="#v1">Robot 1 and why it failed</a></li>
+        <li><a href="#rebuild">The rebuild</a></li>
+        <li><a href="#feb18">Testing under pressure</a></li>
+        <li><a href="#final">Final robot</a></li>
+        <li><a href="#code">Programming</a></li>
+        <li><a href="#skills">Skills strategy</a></li>
+        <li><a href="#durable">Built to survive</a></li>
+        <li><a href="#outreach">Outreach</a></li>
+        <li><a href="#lessons">What I learned</a></li>
+      </ol>
+    </aside>
+
+    <div class="cs-body">
+      <section id="challenge">
+        <h2>The challenge</h2>
+        <p>VEX Spin Up was played on a 12 ft × 12 ft field by two alliances of two robots. Each match had a 15-second autonomous period followed by 1 minute 45 seconds of driver control.</p>
+        <table class="data">
+          <thead><tr><th>Scoring element</th><th>How it scores</th><th>What it meant for our design</th></tr></thead>
+          <tbody>
+            <tr><td>Foam discs</td><td>5 points each in the high goal</td><td>Needed a fast, accurate shooter that could fire 3 discs back to back</td></tr>
+            <tr><td>Rollers</td><td>10 points each when turned to your colour</td><td>One roller is worth 2 discs, so a reliable roller mechanism was "free" points</td></tr>
+            <tr><td>Expansion</td><td>Covering field tiles in the last 10 seconds</td><td>End game decides close matches, so we needed an expansion that fires every time</td></tr>
+          </tbody>
+        </table>
+        <p>After reading the game manual, we broke the robot into three subsystems: <b>drive</b>, <b>intake</b> and <b>shooter</b>, plus rollers and expansion.</p>
+      </section>
+
+      <section id="team">
+        <h2>Team and process</h2>
+        <p>We were a four-person team. I was team captain, head builder and one of the programmers. We worked through the <b>SPICE</b> design process: <b>S</b>ituation, <b>P</b>roblems and possibilities, <b>I</b>nvestigation and ideas, <b>C</b>hoose and create, <b>E</b>valuate.</p>
+        <p>We started our engineering notebook in June 2022, the week the game was released. We logged every two days over the summer and every three days during the school year. By the end of the season it was 141 pages long.</p>
+      </section>
+
+      <section id="season">
+        <h2>Season timeline</h2>
+        <ol class="steps">
+          <li><span class="d">June 2022</span><b>Game release and brainstorming</b>Read the manual, set our strategy and timeline, started the notebook.</li>
+          <li><span class="d">Summer – Fall 2022</span><b>Robot 1</b>Four-motor tank drive, curved flywheel shooter, flex-wheel intake.</li>
+          <li><span class="d">December 18, 2022</span><b>First competition: 8th place</b>A strong result for a first-year team, but the robot was slow and clunky next to the top teams.</li>
+          <li><span class="d">Dec 2022 – Jan 2023</span><b>Full rebuild</b>Faster, shorter intake, a close-range straight shooter, spread-out rollers and an expansion.</li>
+          <li><span class="d">February 18, 2023</span><b>Disco competition: 4-2 and quarterfinals</b>Picked for an alliance and lost a close quarterfinal. Driver skills went from 126 to 142.</li>
+          <li><span class="d">March 5, 2023</span><b>Ontario Provincial Championship</b>Qualified through the top 10 in Ontario skills, with a new six-motor drive. Finished 11th of 71 Ontario teams in skills.</li>
+          <li><span class="d">April 2023</span><b>VEX Robotics World Championship, Dallas</b>Competed at the largest robotics competition in the world and placed 11th in our division.</li>
+        </ol>
+      </section>
+
+      <section id="v1">
+        <h2>Robot 1 and why it failed</h2>
+        <p>Our first robot used a <b>four-motor tank drive with omni wheels</b>. We considered X-drive and H-drive, but sideways movement wasn't needed and an X-drive would have been hard to program in time.</p>
+        <p>For the shooter we chose a <b>curved flywheel shooter</b> with a lexan guide and a piston to push discs. We ruled out a catapult because it is inaccurate if the robot gets pushed. The intake used <b>four flex wheels</b> on a high-strength shaft to lift discs into a holding compartment.</p>
+        <div class="gallery">
+          <figure><img src="../img/vex-build-first.jpg" alt="First robot during early build with flex-wheel intake" loading="lazy"><figcaption>Early build of robot 1</figcaption></figure>
+          <figure><img src="../img/vex-build-intake.jpg" alt="Flex-wheel intake lifting a yellow disc" loading="lazy"><figcaption>Testing the flex-wheel intake</figcaption></figure>
+          <figure><img src="../img/vex-first-comp.jpg" alt="Robot 1 at the first competition" loading="lazy"><figcaption>Robot 1 at our first event</figcaption></figure>
+        </div>
+        <h3>What went wrong</h3>
+        <p>We were honest with ourselves in the notebook: the design had the right idea but poor execution.</p>
+        <ul>
+          <li>The drive chain kept loosening and losing spacing, so the drive wasn't smooth</li>
+          <li>Extra screws and metal made the robot heavy</li>
+          <li>Regular shafts would have snapped under load where we needed high-strength shafts</li>
+          <li>We started subsystems and left them half finished instead of planning ahead</li>
+        </ul>
+        <div class="callout"><b>Fix we committed to:</b> build and test each subsystem separately, plan our time, and study proven designs before building.</div>
+      </section>
+
+      <section id="rebuild">
+        <h2>The rebuild</h2>
+        <p>After the December event we ran a full SPICE review and set new requirements for the robot:</p>
+        <ul>
+          <li>A faster intake with less travel distance to the shooter</li>
+          <li>A close-range shooter that fires three discs in under 3 seconds</li>
+          <li>Rollers spread farther apart so they line up easily</li>
+          <li>An expansion, using a motor if pneumatics weren't available</li>
+        </ul>
+        <p>We based the new layout on a proven design from team 4082B and adapted parts to what we had. We modelled the drive in Autodesk Inventor before building.</p>
+        <figure class="wide"><img src="../img/vex-cad-drive.jpg" alt="CAD model of the drivetrain with omni wheels" loading="lazy"><figcaption>CAD of the new drivetrain, modelled in Autodesk Inventor</figcaption></figure>
+        <div class="gallery">
+          <figure><img src="../img/vex-rebuild-drive.jpg" alt="New drive base with motors and rollers" loading="lazy"><figcaption>New drive base and rollers</figcaption></figure>
+          <figure><img src="../img/vex-rebuild-base.jpg" alt="Rebuilt chassis with intake rollers" loading="lazy"><figcaption>Rebuilt chassis</figcaption></figure>
+          <figure><img src="../img/vex-rebuild-intake.jpg" alt="Intake ramp on the rebuilt robot" loading="lazy"><figcaption>Short intake ramp</figcaption></figure>
+          <figure><img src="../img/vex-rebuild-shooter.jpg" alt="Straight shooter and indexer on the rebuilt robot" loading="lazy"><figcaption>Straight shooter with indexer</figcaption></figure>
+        </div>
+        <h3>Design changes and why</h3>
+        <div class="tablebox">
+        <table class="data">
+          <thead><tr><th>Subsystem</th><th>Before</th><th>After</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td>Shooter</td><td>Curved, one disc at a time</td><td>Straight flywheel with a motorized indexer</td><td>Fires 3 discs back to back</td></tr>
+            <tr><td>Intake</td><td>Long flex-wheel path</td><td>Short path into a 4-bar holder</td><td>Less travel time means more shots per match</td></tr>
+            <tr><td>Rollers</td><td>Fast, low torque</td><td>Higher sprocket ratio</td><td>Rollers were hard to turn without more torque</td></tr>
+            <tr><td>Expansion</td><td>None</td><td>Motorized, then pneumatic</td><td>Pneumatics gave more force and covered more tiles</td></tr>
+            <tr><td>Drive</td><td>4-motor chain drive</td><td>6-motor drive (4 omni + 2 traction)</td><td>More pushing power and speed (added before Provincials)</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </section>
+
+      <section id="feb18">
+        <h2>Testing under pressure: February 18</h2>
+        <p>Our own organization hosted the February 18 Disco competition. We went 4-2 in qualifiers, were picked for an alliance, and lost a close quarterfinal.</p>
+        <div class="tablebox">
+        <table class="data">
+          <thead><tr><th>Match</th><th class="num">Blue</th><th class="num">Red</th><th>1104V</th></tr></thead>
+          <tbody>
+            <tr><td>Qualifier 8</td><td class="num">75</td><td class="num">157</td><td class="win">Win</td></tr>
+            <tr><td>Qualifier 15</td><td class="num">58</td><td class="num">16</td><td class="loss">Loss</td></tr>
+            <tr><td>Qualifier 29</td><td class="num">39</td><td class="num">142</td><td class="loss">Loss</td></tr>
+            <tr><td>Qualifier 48</td><td class="num">107</td><td class="num">71</td><td class="win">Win</td></tr>
+            <tr><td>Qualifier 62</td><td class="num">107</td><td class="num">69</td><td class="win">Win</td></tr>
+            <tr><td>Qualifier 73</td><td class="num">59</td><td class="num">83</td><td class="win">Win</td></tr>
+            <tr><td>Round of 16</td><td class="num">101</td><td class="num">35</td><td class="win">Win</td></tr>
+            <tr><td>Quarterfinal</td><td class="num">156</td><td class="num">97</td><td class="loss">Loss</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <h3>Problems we found, and what we changed</h3>
+        <div class="tablebox">
+        <table class="data">
+          <thead><tr><th>Problem</th><th>What happened</th><th>Fix</th></tr></thead>
+          <tbody>
+            <tr><td>Loose cable</td><td>We unplugged a motor cable for judging and forgot to reconnect it, so the shooter didn't work for a match</td><td>More attention to detail and organization between matches</td></tr>
+            <tr><td>Inconsistent expansion</td><td>Added days before the event; the string had to be wrapped a complex way and sometimes didn't fire</td><td>Rebuilt as a reliable pneumatic expansion</td></tr>
+            <tr><td>Code errors</td><td>The expansion sometimes didn't trigger and the flywheel lost too much RPM between shots</td><td>Closed-loop flywheel speed control</td></tr>
+            <tr><td>Decision making</td><td>We expanded when we didn't need to, the string left the field, and we were disqualified</td><td>Better strategy calls with experience: we improved on when to expand and when to take rollers</td></tr>
+            <tr><td>Weak drive</td><td>The 4-motor chain drive had no pushing power and was easy to push around</td><td>Switched to a 6-motor drive</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p>Even with those problems, our <b>driver skills score improved from 126 to 142</b>, and we became much better at deciding when to take rollers and when not to expand.</p>
+      </section>
+
+      <section id="final">
+        <h2>Final robot</h2>
+        <p>For Provincials and Worlds we rebuilt the drive with <b>six motors: four omni wheels and two traction wheels</b>, three per side. It took more practice to align shots, but it gave us far more pushing power and speed.</p>
+        <div class="gallery tall">
+          <figure><img src="../img/vex-worlds-1.jpg" alt="Worlds robot with flywheel shooter and chain-driven intake" loading="lazy"><figcaption>Worlds robot: flywheel and intake</figcaption></figure>
+          <figure><img src="../img/vex-worlds-2.jpg" alt="Worlds robot from the side showing pneumatics" loading="lazy"><figcaption>Pneumatics and six-motor drive</figcaption></figure>
+          <figure><img src="../img/vex-worlds-3.jpg" alt="Worlds robot from the rear" loading="lazy"><figcaption>Rear view</figcaption></figure>
+        </div>
+        <div class="gallery" style="margin-top:20px">
+          <figure><img src="../img/vex-sixmotor-chain.jpg" alt="Chain and sprocket drive detail" loading="lazy"><figcaption>Chain and sprocket detail</figcaption></figure>
+          <figure><img src="../img/vex-flywheel.jpg" alt="Flywheel mounted on the shooter" loading="lazy"><figcaption>Flywheel</figcaption></figure>
+          <figure><img src="../img/vex-prov-1.jpg" alt="Provincials robot on the field" loading="lazy"><figcaption>Provincials robot on the field</figcaption></figure>
+          <figure><img src="../img/vex-prov-2.jpg" alt="Provincials robot with team plate 1104V" loading="lazy"><figcaption>Team 1104V</figcaption></figure>
+        </div>
+      </section>
+
+      <section id="code">
+        <h2>Programming</h2>
+        <p>We programmed in C++, first in VEXcode and later in PROS. Most of the team was new to C++, so we learned it together with help from our mentors.</p>
+        <h3>Driver control: arcade drive</h3>
+        <p>We tried tank and arcade controls and chose arcade. The left stick's forward and turn values are mixed into a voltage for each side of the six-motor drive:</p>
+<pre class="code"><span class="c">// joystick % (-100..100) x 120 = millivolts (-12000..12000)</span>
+leftSpeed  = (Controller.Axis3.position(percent) + Controller.Axis4.position(percent)) * 120;
+rightSpeed = (Controller.Axis3.position(percent) - Controller.Axis4.position(percent)) * 120;
+
+backLeft.spin(forward,  leftSpeed,  voltageUnits::mV);
+middleLeft.spin(forward, leftSpeed, voltageUnits::mV);
+frontLeft.spin(forward, leftSpeed,  voltageUnits::mV);
+<span class="c">// ...same for the right side, then wait(20, msec) to free the CPU</span></pre>
+        <h3>Keeping the flywheel at speed</h3>
+        <p>Every shot pulls energy out of the flywheel, so RPM drops and the next disc falls short. A fixed voltage wasn't good enough. We tested bang-bang and PI control, then worked on a take-back-half (TBH) velocity controller adapted from a well-known VEX Forum example. TBH raises motor power based on the speed error, and each time the error crosses zero it cuts power to halfway between the current value and the value at the last crossing. That way the flywheel settles at the target speed quickly without overshooting.</p>
+        <h3>Autonomous</h3>
+        <p>Our match autonomous was built to guarantee at least one roller (10 points) every time, then work toward two discs in the goal and the second roller for the Autonomous Win Point. We used motor encoders for distance and an inertial (gyro) sensor for accurate turns, and we were tuning a line tracker to stop at the autonomous line.</p>
+        <p><a href="https://github.com/prabvirgrewal/vex-spin-up-robot">See the full robot code on GitHub →</a></p>
+      </section>
+
+      <section id="skills">
+        <h2>Skills strategy</h2>
+        <p>In the 60-second skills run, rollers are worth 10 points and each high-goal disc is worth 5, so we planned a route that collects discs while taking rollers:</p>
+        <ol>
+          <li>Shoot the two preloads from a fixed start position</li>
+          <li>Take the two nearest rollers while intaking 3 discs, then shoot them</li>
+          <li>Intake and shoot two more sets of 3 discs</li>
+          <li>Take the last two rollers with about 20 seconds left, picking up nearby discs on the way</li>
+          <li>Shoot what's left and expand</li>
+        </ol>
+        <figure class="wide"><img src="../img/vex-skills-route.jpg" alt="Hand-drawn skills route on the field map in five colours" loading="lazy"><figcaption>Our planned skills route: shoot preloads, run the route in order, then expand</figcaption></figure>
+        <p>The plan was designed for at least 100 points, aiming for 120 to 130. At our first tournament we scored 52 points in programming skills.</p>
+      </section>
+
+      <section id="durable">
+        <h2>Built to survive</h2>
+        <p>At early events we saw other robots lose parts mid-match, so we designed for durability:</p>
+        <ul>
+          <li><b>Lock nuts</b> on every joint: the rubber insert stops them from loosening under vibration</li>
+          <li><b>Standoffs instead of C-channels</b> in some places, since C-channels can bend and aluminum standoffs are stiff and light</li>
+          <li><b>Extra bracing</b> on each subsystem with beams and standoffs</li>
+          <li>Secured motor screws so motors don't loosen, add friction and lose RPM</li>
+        </ul>
+      </section>
+
+      <section id="outreach">
+        <h2>Outreach and teamwork</h2>
+        <ul>
+          <li>Ran a <b>Girl Powered</b> event with a local library to make robotics and STEM more accessible</li>
+          <li>Invited teams 3150A and 81208X to practise with us at our facility during the season</li>
+          <li>Built a shared Google Sheet to scout other teams' autonomous routines and strengths for alliance selection</li>
+        </ul>
+        <figure class="wide"><img src="../img/certificate.jpg" alt="Certificate of Recognition from the MPP for Brampton East" loading="lazy" style="max-height:420px"><figcaption>Certificate of Recognition from the MPP for Brampton East, March 2023</figcaption></figure>
+      </section>
+
+      <section id="lessons">
+        <h2>What I learned</h2>
+        <ul>
+          <li><b>Fail early, then rebuild with data.</b> Robot 1 was a mess, but writing down exactly why let us rebuild with clear requirements.</li>
+          <li><b>Test the whole system, not just parts.</b> Our expansion worked on the bench and failed in matches because it was added too late.</li>
+          <li><b>Mechanical and software problems are linked.</b> Flywheel RPM drop was fixed with both better mechanics and closed-loop control.</li>
+          <li><b>Leadership is organization.</b> Several losses came from process mistakes, like a loose cable, rather than bad engineering. Planning and attention to detail matter as much as the design.</li>
+        </ul>
+      </section>
+
+      <div class="next-proj">
+        <a class="btn" href="../index.html#projects">← All projects</a>
+        <a class="btn primary" href="line-follower.html">Next: Line-following robot →</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div><h2>Let's talk.</h2><p>Looking for a co-op or summer role in automation, controls or manufacturing.</p></div>
+    <div>
+      <p>Email: <a href="mailto:grewalprabvir@gmail.com">grewalprabvir@gmail.com</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/prabvirgrewal">linkedin.com/in/prabvirgrewal</a></p>
+      <p>GitHub: <a href="https://github.com/prabvirgrewal">github.com/prabvirgrewal</a></p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

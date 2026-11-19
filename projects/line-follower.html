@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Line-Following Robot Case Study</title>
+<meta name="description" content="A 4WD Arduino robot that follows a tape line and drives around obstacles, by Prabvir Grewal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+<nav class="top" aria-label="Main">
+  <div class="wrap">
+    <a class="me" href="../index.html">PRABVIR GREWAL</a>
+    <ul>
+      <li><a href="../index.html#projects" aria-current="page">Projects</a></li>
+      <li><a href="../index.html#awards">Awards</a></li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="cs-hero">
+  <div class="wrap">
+    <a class="crumb" href="../index.html#projects">← All projects</a>
+    <p class="tag">Case study · Computer Engineering · Solo project · 2025</p>
+    <h1>A robot that follows the line and finds its way around obstacles</h1>
+    <p class="sub">A 4-wheel-drive Arduino robot that follows a route marked in black tape. When something blocks the line, it looks left and right, drives around it, and picks the line back up to finish its route.</p>
+    <dl class="specbox">
+      <div><dt>Controller</dt><dd>Arduino Uno + L293D motor shield</dd></div>
+      <div><dt>Sensors</dt><dd>2 IR line sensors · HC-SR04 ultrasonic</dd></div>
+      <div><dt>Actuators</dt><dd>4 DC gear motors · SG90 servo</dd></div>
+      <div><dt>Build</dt><dd>3D-printed chassis and sensor mount</dd></div>
+    </dl>
+    <div class="btns"><a class="btn primary" href="https://github.com/prabvirgrewal/line-following-robot">View the code on GitHub</a></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="cs-layout">
+    <aside class="toc" aria-label="On this page">
+      <p>On this page</p>
+      <ol>
+        <li><a href="#goal">Goal</a></li>
+        <li><a href="#hardware">Hardware</a></li>
+        <li><a href="#wiring">Wiring</a></li>
+        <li><a href="#build">Build process</a></li>
+        <li><a href="#logic">How it thinks</a></li>
+        <li><a href="#code">Key code</a></li>
+        <li><a href="#tuning">Testing and tuning</a></li>
+        <li><a href="#lessons">What I learned</a></li>
+      </ol>
+    </aside>
+    <div class="cs-body">
+      <section id="goal">
+        <h2>Goal</h2>
+        <p>Build a robot that can run a pre-designed route marked with black tape on the floor, like a simple automated guided vehicle in a warehouse, and handle obstacles on that route without a person stepping in.</p>
+        <div class="gallery tall">
+          <figure><img src="../img/line-1.jpg" alt="Front of the robot with ultrasonic sensor and two IR sensors" loading="lazy"><figcaption>Ultrasonic "eyes" on a servo, IR sensors underneath</figcaption></figure>
+          <figure><img src="../img/line-2.jpg" alt="Top of the robot showing the Arduino and motor shield" loading="lazy"><figcaption>Arduino Uno and motor shield</figcaption></figure>
+          <figure><img src="../img/line-3.jpg" alt="Underside showing four yellow DC gear motors" loading="lazy"><figcaption>Four DC gear motors</figcaption></figure>
+        </div>
+      </section>
+
+      <section id="hardware">
+        <h2>Hardware</h2>
+        <table class="data">
+          <thead><tr><th>Part</th><th>Job</th></tr></thead>
+          <tbody>
+            <tr><td>Arduino Uno</td><td>Central processor: reads sensors and controls the motors</td></tr>
+            <tr><td>L293D motor shield</td><td>Drives the four DC motors and gives PWM speed control</td></tr>
+            <tr><td>2 × IR sensors</td><td>Emit infrared light and detect the reflection to tell black tape from the floor</td></tr>
+            <tr><td>HC-SR04 ultrasonic sensor</td><td>Measures distance with sound waves to detect obstacles ahead</td></tr>
+            <tr><td>SG90 servo</td><td>Turns the ultrasonic sensor to look left and right</td></tr>
+            <tr><td>4 × DC gear motors</td><td>Four-wheel drive with skid steering</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="wiring">
+        <h2>Wiring</h2>
+        <p>I drew the full circuit before building: the Arduino, four motors, the servo, the ultrasonic sensor and both IR sensors. The motor shield uses most of the digital pins, so the sensors connect through the analog header.</p>
+        <figure class="wide"><img src="../img/line-diagram.jpg" alt="Pictorial wiring diagram with Arduino, breadboard, four motors, servo, ultrasonic and IR sensors" loading="lazy"><figcaption>Pictorial wiring diagram</figcaption></figure>
+      </section>
+
+      <section id="build">
+        <h2>Build process</h2>
+        <ol class="steps">
+          <li><span class="d">Step 1</span><b>Chassis</b>Mounted the four gear motors to a 3D-printed base, with wires routed through the deck.</li>
+          <li><span class="d">Step 2</span><b>Electronics</b>Stacked the motor shield on the Arduino and wired motors M1 to M4, the servo and the sensors.</li>
+          <li><span class="d">Step 3</span><b>Sensor mount</b>Added a printed front mount for the ultrasonic sensor on the servo, and the IR sensors low at the front.</li>
+          <li><span class="d">Step 4</span><b>Code and test</b>Programmed on a laptop, then tested on a taped route and adjusted.</li>
+        </ol>
+      </section>
+
+      <section id="logic">
+        <h2>How it thinks</h2>
+        <p>The program is a small state machine with three states:</p>
+        <div class="flow">
+          <span class="node">FOLLOW LINE</span><span class="arrow">→ obstacle &lt; 15 cm →</span>
+          <span class="node">AVOID OBSTACLE</span><span class="arrow">→</span>
+          <span class="node">FIND LINE</span><span class="arrow">→ line found →</span>
+          <span class="node">FOLLOW LINE</span>
+        </div>
+        <ul>
+          <li><b>Follow line:</b> if neither IR sensor sees tape, the line is between them, so drive straight. If one sensor sees tape, the robot has drifted, so it turns back toward that side.</li>
+          <li><b>Avoid obstacle:</b> stop, turn the servo to measure distance left and right, then drive around on the side with more room.</li>
+          <li><b>Find line:</b> angle back toward the route and drive until a sensor sees tape again. If it can't find the line in 2.5 seconds, it stops safely instead of wandering off.</li>
+        </ul>
+      </section>
+
+      <section id="code">
+        <h2>Key code</h2>
+        <p>The code on GitHub is a cleaned-up, commented rewrite of the robot's program, organized around the state machine above.</p>
+        <h3>Steering back onto the line</h3>
+<pre class="code">void followLine() {
+  bool l = leftOnLine();
+  bool r = rightOnLine();
+  if (!l &amp;&amp; !r)      drive(CRUISE_SPEED, CRUISE_SPEED);    <span class="c">// line is between the sensors</span>
+  else if (l &amp;&amp; !r)  drive(-TURN_SPEED / 2, TURN_SPEED);   <span class="c">// drifted right: steer left</span>
+  else if (!l &amp;&amp; r)  drive(TURN_SPEED, -TURN_SPEED / 2);   <span class="c">// drifted left: steer right</span>
+  else               drive(CRUISE_SPEED, CRUISE_SPEED);    <span class="c">// crossing: keep going</span>
+}</pre>
+        <h3>Measuring distance with the ultrasonic sensor</h3>
+<pre class="code">digitalWrite(TRIG_PIN, HIGH);  delayMicroseconds(10);  digitalWrite(TRIG_PIN, LOW);
+unsigned long us = pulseIn(ECHO_PIN, HIGH, 25000UL);  <span class="c">// echo time in microseconds</span>
+return us / 58;                                        <span class="c">// ~58 us per cm, round trip</span></pre>
+        <p>Each reading is the median of three pings, which filters out a single bad echo. The robot only pings every 60 ms, because a ping can block for up to 25 ms and the line sensors need to be read as often as possible.</p>
+      </section>
+
+      <section id="tuning">
+        <h2>Testing and tuning</h2>
+        <ul>
+          <li><b>Sensor calibration:</b> I had to calibrate the IR sensors to track the black line accurately. That made tracking much more consistent.</li>
+          <li><b>Code optimization:</b> I found repeated code and turned it into user-defined functions, like <code>drive()</code> and <code>stopMotors()</code>, so the logic is easier to change.</li>
+          <li><b>Design constraints:</b> I had to work around physical limits, like the limited capacity of the power supply for four motors and a servo.</li>
+        </ul>
+      </section>
+
+      <section id="lessons">
+        <h2>What I learned</h2>
+        <ul>
+          <li>How a simple closed loop works in practice: read sensors, decide, correct, repeat</li>
+          <li>Why sensor calibration matters as much as the code</li>
+          <li>How to structure a program as states so each behaviour stays separate and easy to test</li>
+          <li>How to plan pin use around a shield that takes most of the board's pins</li>
+        </ul>
+      </section>
+
+      <div class="next-proj">
+        <a class="btn" href="vex-spin-up.html">← VEX robot</a>
+        <a class="btn primary" href="solar-tracker.html">Next: Solar tracker →</a>
+      </div>
+    </div>
+  </div>
+</main>
+<footer id="contact">
+  <div class="wrap">
+    <div><h2>Let's talk.</h2><p>Looking for a co-op or summer role in automation, controls or manufacturing.</p></div>
+    <div>
+      <p>Email: <a href="mailto:grewalprabvir@gmail.com">grewalprabvir@gmail.com</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/prabvirgrewal">linkedin.com/in/prabvirgrewal</a></p>
+      <p>GitHub: <a href="https://github.com/prabvirgrewal">github.com/prabvirgrewal</a></p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

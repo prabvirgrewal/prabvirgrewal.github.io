@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solar-Tracking Phone Charger Case Study</title>
+<meta name="description" content="An Arduino solar station that follows the sun and charges a phone, by Prabvir Grewal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+<nav class="top" aria-label="Main">
+  <div class="wrap">
+    <a class="me" href="../index.html">PRABVIR GREWAL</a>
+    <ul>
+      <li><a href="../index.html#projects" aria-current="page">Projects</a></li>
+      <li><a href="../index.html#awards">Awards</a></li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="cs-hero">
+  <div class="wrap">
+    <a class="crumb" href="../index.html#projects">← All projects</a>
+    <p class="tag">Case study · Computer Engineering (TEJ4M) · 2024</p>
+    <h1>A solar charger that follows the sun</h1>
+    <p class="sub">A fixed solar panel misses most of the day's light. This Arduino station tracks the sun with four light sensors and two servos, keeps the panel pointed at the brightest part of the sky, and uses that energy to charge a phone.</p>
+    <dl class="specbox">
+      <div><dt>Controller</dt><dd>Arduino-compatible board</dd></div>
+      <div><dt>Tracking</dt><dd>4 light sensors · 2 servos (pan + tilt)</dd></div>
+      <div><dt>Extras</dt><dd>Temp/humidity sensor · 16×2 LCD · buzzer · button</dd></div>
+      <div><dt>Fabrication</dt><dd>Laser-cut wood plates · brass standoffs</dd></div>
+    </dl>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="cs-layout">
+    <aside class="toc" aria-label="On this page">
+      <p>On this page</p>
+      <ol>
+        <li><a href="#why">Why build it</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#build">The build</a></li>
+        <li><a href="#skills">Engineering skills</a></li>
+        <li><a href="#plan">Planning</a></li>
+        <li><a href="#lessons">What I learned</a></li>
+      </ol>
+    </aside>
+    <div class="cs-body">
+      <section id="why">
+        <h2>Why build it</h2>
+        <p>I wanted a project that shows what renewable energy can do in an everyday, useful way. Solar tracking keeps a panel facing the sun as it moves, so it collects more energy than a fixed panel.</p>
+        <p>I researched project ideas for about a month and wrote full proposals for two options: this solar tracker and a 3D-printed, remote-controlled robotic dog. I chose the solar tracker because it combines electronics, motor control, power management and sustainable energy in one build.</p>
+      </section>
+
+      <section id="how">
+        <h2>How it works</h2>
+        <div class="flow">
+          <span class="node">4 light sensors</span><span class="arrow">→ compare brightness →</span>
+          <span class="node">Arduino</span><span class="arrow">→ angle error →</span>
+          <span class="node">2 servos</span><span class="arrow">→</span>
+          <span class="node">Panel faces sun</span>
+        </div>
+        <ul>
+          <li>Four light sensors measure brightness from different directions, which tells the Arduino where the sun is</li>
+          <li>Two servos tilt and pan the panel toward the brighter side until the readings balance</li>
+          <li>A charging module uses the panel's power to charge a phone</li>
+          <li>A temperature and humidity sensor, a 16×2 LCD, a buzzer and a button show readings and let you interact with the station</li>
+        </ul>
+      </section>
+
+      <section id="build">
+        <h2>The build</h2>
+        <p>The station is built on two laser-cut wood plates held apart by brass standoffs. Sensor modules mount to the top deck and the LCD sits at the front. The panel and its two servos sit on a centre mast, and the station runs on an AA battery pack.</p>
+        <div class="gallery tall">
+          <figure><img src="../img/solar-1.jpg" alt="Solar tracker with panel, sensor modules, LCD and AA battery pack" loading="lazy"><figcaption>Panel, sensors, LCD and battery pack</figcaption></figure>
+          <figure><img src="../img/solar-2.jpg" alt="Laser-cut wood chassis with sensor modules and wiring" loading="lazy"><figcaption>Laser-cut chassis and sensor wiring</figcaption></figure>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2>Engineering skills it covered</h2>
+        <table class="data">
+          <thead><tr><th>Area</th><th>What it involved</th></tr></thead>
+          <tbody>
+            <tr><td>Hardware integration</td><td>Choosing, wiring and combining the charging module, servos, light sensors and microcontroller so they work together</td></tr>
+            <tr><td>Electronics design</td><td>Circuits for power management, motor control and the sensor interface</td></tr>
+            <tr><td>Motor control</td><td>Moving the servos precisely to keep the panel aimed at the sun</td></tr>
+            <tr><td>Power management</td><td>Converting solar energy into electricity that can charge a phone reliably</td></tr>
+            <tr><td>Programming</td><td>Reading the sensors, working out where the sun is, and driving the servos</td></tr>
+            <tr><td>Manufacturing</td><td>Laser cutting and 3D printing for the chassis and sensor mounts</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="plan">
+        <h2>Planning</h2>
+        <p>Before building, I wrote a 24-page proposal with a parts list, pictorial and schematic diagrams, a sketch of the laser-cut and 3D-printed parts, and a week-by-week timeline.</p>
+        <div class="tablebox">
+        <table class="data">
+          <thead><tr><th>Phase</th><th>Work</th></tr></thead>
+          <tbody>
+            <tr><td>Research</td><td>Brainstorm renewable energy ideas, check feasibility, write two proposals</td></tr>
+            <tr><td>Design</td><td>Schematic and pictorial diagrams, parts list on a $50–60 budget</td></tr>
+            <tr><td>Fabrication</td><td>Laser cut and 3D print parts, cut materials to size, assemble</td></tr>
+            <tr><td>Electronics</td><td>Assemble and fit the circuit with neat wire management</td></tr>
+            <tr><td>Code</td><td>Program solar tracking, troubleshoot, add features</td></tr>
+            <tr><td>Report</td><td>Document the design, build and testing</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p>I estimated the full project at 167 to 217 hours.</p>
+      </section>
+
+      <section id="lessons">
+        <h2>What I learned</h2>
+        <ul>
+          <li>How a sensor-driven tracking loop works: compare inputs, find the error, move to reduce it</li>
+          <li>How to plan a project from proposal to finished build, with a budget and timeline</li>
+          <li>How to combine laser-cut parts, electronics and code into one working product</li>
+        </ul>
+      </section>
+
+      <div class="next-proj">
+        <a class="btn" href="line-follower.html">← Line-following robot</a>
+        <a class="btn primary" href="hotel-system.html">Next: Hotel reservation system →</a>
+      </div>
+    </div>
+  </div>
+</main>
+<footer id="contact">
+  <div class="wrap">
+    <div><h2>Let's talk.</h2><p>Looking for a co-op or summer role in automation, controls or manufacturing.</p></div>
+    <div>
+      <p>Email: <a href="mailto:grewalprabvir@gmail.com">grewalprabvir@gmail.com</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/prabvirgrewal">linkedin.com/in/prabvirgrewal</a></p>
+      <p>GitHub: <a href="https://github.com/prabvirgrewal">github.com/prabvirgrewal</a></p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

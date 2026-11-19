@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hotel Reservation System Case Study</title>
+<meta name="description" content="A C++ object-oriented hotel booking system built at McMaster University, by Prabvir Grewal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+<nav class="top" aria-label="Main">
+  <div class="wrap">
+    <a class="me" href="../index.html">PRABVIR GREWAL</a>
+    <ul>
+      <li><a href="../index.html#projects" aria-current="page">Projects</a></li>
+      <li><a href="../index.html#awards">Awards</a></li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="cs-hero">
+  <div class="wrap">
+    <a class="crumb" href="../index.html#projects">← All projects</a>
+    <p class="tag">Case study · McMaster University · ENGTECH 1PR3 · Team of 3</p>
+    <h1>A hotel booking system in C++</h1>
+    <p class="sub">A console application that manages bookings for a 12-room hotel. It checks every night of a stay for conflicts, prices the booking, and saves everything to a file so nothing is lost when the program closes.</p>
+    <dl class="specbox">
+      <div><dt>Language</dt><dd>C++17</dd></div>
+      <div><dt>Concepts</dt><dd>OOP · vectors · file I/O · date math</dd></div>
+      <div><dt>Scope</dt><dd>12 rooms · 5 room types · 1–14 night stays</dd></div>
+      <div><dt>Course</dt><dd>Object-Oriented Programming</dd></div>
+    </dl>
+    <div class="btns"><a class="btn primary" href="https://github.com/prabvirgrewal/hotel-reservation-system">View the code on GitHub</a></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="cs-layout">
+    <aside class="toc" aria-label="On this page">
+      <p>On this page</p>
+      <ol>
+        <li><a href="#problem">The problem</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#design">Class design</a></li>
+        <li><a href="#dates">The hard part: dates</a></li>
+        <li><a href="#run">Sample run</a></li>
+        <li><a href="#lessons">What I learned</a></li>
+      </ol>
+    </aside>
+    <div class="cs-body">
+      <section id="problem">
+        <h2>The problem</h2>
+        <p>Our team of three had to apply object-oriented programming to a real-world system. We chose a small hotel: rooms with different types and prices, guests, and reservations that must never double-book a room.</p>
+      </section>
+
+      <section id="features">
+        <h2>Features</h2>
+        <ul>
+          <li>Show all <b>12 rooms</b> across <b>5 types</b>: Standard ($120), Deluxe ($160), Suite ($220), Family ($250) and Executive ($300) per night</li>
+          <li>Book a stay of <b>1 to 14 nights</b>, with checks for invalid dates, past dates and leap years</li>
+          <li>Show <b>day-by-day availability</b> for the whole stay, then pick a specific room or browse by room type</li>
+          <li>Give each booking a unique random <b>4-digit booking ID</b> and calculate the total price</li>
+          <li>Cancel by booking ID, with a confirmation step</li>
+          <li><b>Save every booking to a file</b> and load it on the next run</li>
+        </ul>
+      </section>
+
+      <section id="design">
+        <h2>Class design</h2>
+        <table class="data">
+          <thead><tr><th>Class</th><th>Responsibility</th></tr></thead>
+          <tbody>
+            <tr><td><code>Room</code></td><td>Room number, type and price per night</td></tr>
+            <tr><td><code>Customer</code></td><td>Guest name and contact number</td></tr>
+            <tr><td><code>Date</code></td><td>Day, month and year for check-in and check-out</td></tr>
+            <tr><td><code>Reservation</code></td><td>Links a customer to a room and dates, with an ID and total price</td></tr>
+            <tr><td><code>ReservationManager</code></td><td>Runs the menu, checks availability, books, cancels, and saves and loads data</td></tr>
+          </tbody>
+        </table>
+        <p>Each class has one job and keeps its data private behind getters. That kept the program easy to test, and new room types or prices can be added without touching the booking logic.</p>
+      </section>
+
+      <section id="dates">
+        <h2>The hard part: dates</h2>
+        <p>A room isn't simply "booked" or "free": it can be taken one week and open the next. The system checks whether a requested stay <b>overlaps</b> any existing reservation for that room:</p>
+<pre class="code"><span class="c">// Two stays overlap if each one starts before the other ends</span>
+bool ReservationManager::datesOverlap(Date aIn, Date aOut, Date bIn, Date bOut) {
+    return dateToTime(aIn) &lt; dateToTime(bOut) &amp;&amp; dateToTime(bIn) &lt; dateToTime(aOut);
+}
+
+bool ReservationManager::isRoomAvailableForDates(int roomNumber, Date in, Date out) {
+    for (Reservation r : reservations)
+        if (r.getRoomNumber() == roomNumber &amp;&amp;
+            datesOverlap(in, out, r.getCheckIn(), r.getCheckOut()))
+            return false;
+    return true;
+}</pre>
+        <p>Dates are converted to <code>time_t</code> with <code>mktime</code>, so counting nights is just a subtraction divided by the seconds in a day. A separate check handles leap years and the number of days in each month.</p>
+      </section>
+
+      <section id="run">
+        <h2>Sample run</h2>
+<pre class="code">Booking Confirmed
+---------------------------------
+Booking ID (4-digit PIN): 5926
+Name: Asha Patel
+Room Number: 201
+Room Type: Deluxe
+Check-in: 1/6/2027
+Check-out: 4/6/2027
+Nights: 3
+Total Price: $480</pre>
+      </section>
+
+      <section id="lessons">
+        <h2>What I learned</h2>
+        <ul>
+          <li>How to split a real system into classes with clear responsibilities</li>
+          <li>That edge cases (leap years, overlapping stays, past dates) take more work than the main feature</li>
+          <li>How to save and reload structured data with file streams</li>
+          <li>How to divide a program between three people and still keep it consistent</li>
+        </ul>
+      </section>
+
+      <div class="next-proj">
+        <a class="btn" href="solar-tracker.html">← Solar tracker</a>
+        <a class="btn primary" href="vex-spin-up.html">Next: VEX robot →</a>
+      </div>
+    </div>
+  </div>
+</main>
+<footer id="contact">
+  <div class="wrap">
+    <div><h2>Let's talk.</h2><p>Looking for a co-op or summer role in automation, controls or manufacturing.</p></div>
+    <div>
+      <p>Email: <a href="mailto:grewalprabvir@gmail.com">grewalprabvir@gmail.com</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/prabvirgrewal">linkedin.com/in/prabvirgrewal</a></p>
+      <p>GitHub: <a href="https://github.com/prabvirgrewal">github.com/prabvirgrewal</a></p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
