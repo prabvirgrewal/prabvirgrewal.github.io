@@ -20,8 +20,9 @@
     <a class="me" href="#top">PRABVIR GREWAL</a>
     <ul>
       <li><a href="#why">Why me</a></li>
-      <li><a href="#demo">Demo</a></li>
+      <li><a href="#demo">Lab</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#upcoming">Upcoming</a></li>
       <li><a href="#workshop">Workshop</a></li>
       <li><a href="#awards">Awards</a></li>
       <li><a href="#experience">Experience</a></li>
@@ -33,7 +34,7 @@
     </div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#why">Why me</a><a href="#demo">Demo</a><a href="#projects">Projects</a><a href="#workshop">Workshop</a><a href="#awards">Awards</a><a href="#leadership">Leadership</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+    <a href="#why">Why me</a><a href="#demo">Interactive lab</a><a href="#projects">Projects</a><a href="#upcoming">Upcoming</a><a href="#workshop">Workshop</a><a href="#awards">Awards</a><a href="#leadership">Leadership</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
   </div>
 </nav>
 
@@ -101,9 +102,36 @@
 
 <section id="demo">
   <div class="wrap">
-    <div class="sec-head"><span class="tag">02</span><h2>Try it: tune my flywheel</h2></div>
-    <p class="lead-p" style="margin-bottom:22px;max-width:72ch">Our VEX shooter needed its flywheel to hold a steady speed, even after every shot slowed it down. This is a simplified model of that problem. Drag the sliders to tune the PID controller, then watch what happens when a disc is fired at 3 seconds.</p>
-    <div class="pid reveal">
+    <div class="sec-head"><span class="tag">02</span><h2>Interactive lab</h2></div>
+    <p class="lead-p" style="margin-bottom:22px;max-width:72ch">Don't just read about what I've learned. Try it. Run a conveyor with real PLC ladder logic, or tune the PID controller behind my VEX flywheel.</p>
+    <div class="tabs lab reveal">
+      <div role="tablist" aria-label="Interactive lab">
+        <button role="tab" id="t-plc" aria-controls="p-plc" aria-selected="true"><span class="tab-n">01</span>PLC conveyor</button>
+        <button role="tab" id="t-pid" aria-controls="p-pid" aria-selected="false" tabindex="-1"><span class="tab-n">02</span>PID flywheel</button>
+      </div>
+      <div role="tabpanel" id="p-plc" aria-labelledby="t-plc" tabindex="0">
+        <div class="plc">
+          <div class="ladder">
+            <div class="panel-h"><span>Ladder logic · scanning every 10 ms</span><span class="scan" id="scanLed" aria-hidden="true"></span></div>
+            <div class="ladder-scroll"><svg id="ladder" viewBox="0 0 590 365" role="img" aria-label="Ladder logic diagram for a conveyor with start, stop, a photo-eye and a box counter"></svg></div>
+          </div>
+          <div class="machine">
+            <div class="panel-h"><span>Conveyor line</span><span id="plcState">STOPPED</span></div>
+            <canvas id="conveyor" aria-label="Animated conveyor belt carrying boxes past a photo-eye"></canvas>
+            <div class="hmi">
+              <button type="button" class="pb go" id="btnStart" aria-label="Start button, press and release">START</button>
+              <button type="button" class="pb halt" id="btnStop" aria-label="Stop button, press and release">STOP</button>
+              <div class="lamps"><span class="lamp g" id="lampRun">RUN</span><span class="lamp r on" id="lampStop">STOP</span></div>
+              <div class="count"><small>Boxes counted</small><b id="cnt">0</b><button type="button" class="chipbtn" id="btnRes">Reset</button></div>
+            </div>
+            <p class="explain" id="plcExplain" aria-live="polite"></p>
+          </div>
+        </div>
+        <p class="tag" style="margin-top:12px">Green = contact closed or wire powered. The START and STOP buttons are momentary, like real push buttons: tap START once and see what keeps the motor running.</p>
+      </div>
+      <div role="tabpanel" id="p-pid" aria-labelledby="t-pid" tabindex="0" hidden>
+        <p style="max-width:72ch">Our VEX shooter needed its flywheel to hold a steady speed, even after every shot slowed it down. Drag the sliders to tune the PID controller, then watch what happens when a disc is fired at 3 seconds.</p>
+        <div class="pid">
       <div class="plot">
         <canvas id="pidCanvas" role="img" aria-label="Chart of flywheel speed over time compared to the target speed"></canvas>
         <div class="legend"><span><i style="background:var(--muted)"></i>Target 2400 RPM</span><span><i style="background:var(--accent)"></i>Flywheel speed</span><span><i style="background:var(--good)"></i>Motor voltage (0–12 V)</span></div>
@@ -127,6 +155,8 @@
       </div>
     </div>
     <p class="tag" style="margin-top:10px">Model: 12 V motor with electrical and flywheel lag, anti-windup on the integral. A shot drops speed by 30%.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -208,9 +238,87 @@ return in(a) &lt; out(b) &amp;&amp; in(b) &lt; out(a);</pre>
   </div>
 </section>
 
+<section id="upcoming">
+  <div class="wrap">
+    <div class="sec-head"><span class="tag">05</span><h2>Coming soon: two new builds</h2></div>
+    <p class="lead-p" style="margin-bottom:24px;max-width:72ch">My next two projects bring industrial automation down to desk size. Each one has a budget of $50 and gets a full case study when it's done.</p>
+    <div class="upcoming">
+      <article class="bp reveal">
+        <div class="blueprint">
+          <span class="bp-stamp">Build 01 · Planned</span>
+          <svg viewBox="0 0 400 240" role="img" aria-label="Blueprint sketch of a 4-axis robot arm on a base, with a gripper and dimension lines">
+            <g class="bpl">
+              <rect x="120" y="196" width="120" height="16"/><rect x="150" y="176" width="60" height="20"/>
+              <circle cx="180" cy="168" r="10"/>
+              <line x1="180" y1="168" x2="150" y2="96"/><line x1="190" y1="166" x2="160" y2="94"/>
+              <circle cx="155" cy="95" r="8"/>
+              <line x1="155" y1="95" x2="250" y2="70"/><line x1="157" y1="103" x2="252" y2="78"/>
+              <circle cx="252" cy="74" r="7"/>
+              <path d="M259 70 l26 -10 M259 78 l26 10 M285 60 l10 6 M285 88 l10 -6"/>
+            </g>
+            <g class="bpd">
+              <line x1="100" y1="212" x2="100" y2="95"/><path d="M96 101 l4 -6 l4 6 M96 206 l4 6 l4 -6"/><text x="70" y="158">REACH</text>
+              <path d="M180 140 a28 28 0 0 1 -20 -25" /><text x="196" y="140">J2</text>
+              <path d="M210 66 a30 30 0 0 1 30 -6"/><text x="214" y="54">J3</text>
+              <text x="272" y="52">GRIPPER</text>
+              <path d="M140 222 a50 10 0 0 0 80 0"/><text x="150" y="234">J1 BASE ROTATE</text>
+            </g>
+            <g class="bpt"><rect x="282" y="168" width="112" height="56"/><line x1="282" y1="186" x2="394" y2="186"/><text x="288" y="181">TEACH-REPEAT ARM</text><text x="288" y="201">4 AXES · SERVO</text><text x="288" y="216">BUDGET ≤ $50</text></g>
+          </svg>
+        </div>
+        <div class="body">
+          <h3>Teach-and-Repeat Robot Arm</h3>
+          <p>A 4-axis desktop robot arm controlled by an Arduino. I'll move it by hand with joysticks, save each position, and have it play the whole pick-and-place routine back on its own. That's how industrial robot arms on assembly lines are taught.</p>
+          <ul class="goals">
+            <li><b>Show:</b> servo control, saving positions to memory, smooth motion between points</li>
+            <li><b>Parts:</b> 4-DOF arm kit with servos, joystick modules, external 5–6 V power</li>
+            <li><b>Stretch goal:</b> type commands over serial or let a sensor trigger the routine</li>
+          </ul>
+          <ol class="road" aria-label="Progress"><li class="now">Plan</li><li>Order parts</li><li>Build</li><li>Code</li><li>Case study</li></ol>
+        </div>
+      </article>
+      <article class="bp reveal">
+        <div class="blueprint">
+          <span class="bp-stamp">Build 02 · Planned</span>
+          <svg viewBox="0 0 400 240" role="img" aria-label="Blueprint sketch of a small conveyor with a color sensor, a servo diverter gate and two sorting bins">
+            <g class="bpl">
+              <circle cx="50" cy="150" r="16"/><circle cx="290" cy="150" r="16"/>
+              <line x1="50" y1="134" x2="290" y2="134"/><line x1="50" y1="166" x2="290" y2="166"/>
+              <rect x="70" y="112" width="22" height="22"/><rect x="120" y="112" width="22" height="22" class="fillA"/><rect x="190" y="112" width="22" height="22"/>
+              <rect x="150" y="70" width="34" height="16"/><line x1="167" y1="86" x2="167" y2="104" class="beam"/>
+              <circle cx="262" cy="104" r="6"/><line x1="262" y1="104" x2="238" y2="122"/>
+              <path d="M300 170 l20 0 l0 50 l-60 0 l0 -20"/><path d="M330 170 l50 0 l0 50 l-50 0 z"/>
+              <line x1="50" y1="166" x2="50" y2="200"/><line x1="290" y1="166" x2="290" y2="200"/><line x1="36" y1="200" x2="304" y2="200"/>
+            </g>
+            <g class="bpd">
+              <text x="132" y="62">COLOR SENSOR</text>
+              <text x="214" y="92">SERVO GATE</text>
+              <text x="58" y="190">DC MOTOR</text>
+              <text x="262" y="236">BIN A</text><text x="340" y="236">BIN B</text>
+              <path d="M90 150 l40 0 M124 146 l6 4 l-6 4"/>
+            </g>
+            <g class="bpt"><rect x="282" y="10" width="112" height="56"/><line x1="282" y1="28" x2="394" y2="28"/><text x="288" y="23">SORTING CONVEYOR</text><text x="288" y="43">SENSE/DECIDE/ACT</text><text x="288" y="58">BUDGET ≤ $50</text></g>
+          </svg>
+        </div>
+        <div class="body">
+          <h3>Color-Sorting Mini Conveyor</h3>
+          <p>A small conveyor that carries blocks past a color sensor. A servo gate pushes each block into the right bin, and a break-beam sensor counts them. It's the same sense, decide, act loop as a factory sorting line, written like PLC logic.</p>
+          <ul class="goals">
+            <li><b>Show:</b> sensor calibration, motor control, timing between sensor and gate, counting</li>
+            <li><b>Parts:</b> geared DC motor, color sensor, servo, IR break-beam, laser-cut frame</li>
+            <li><b>Stretch goal:</b> an LCD showing totals for each color, with start and stop buttons like the demo above</li>
+          </ul>
+          <ol class="road" aria-label="Progress"><li class="now">Plan</li><li>Order parts</li><li>Build</li><li>Code</li><li>Case study</li></ol>
+        </div>
+      </article>
+    </div>
+    <p class="tag" style="margin-top:16px">Follow the builds on <a href="https://github.com/prabvirgrewal">GitHub</a> and <a href="https://www.linkedin.com/in/prabvirgrewal">LinkedIn</a>.</p>
+  </div>
+</section>
+
 <section id="workshop">
   <div class="wrap">
-    <div class="sec-head"><span class="tag">05</span><h2>Inside my workshop</h2></div>
+    <div class="sec-head"><span class="tag">06</span><h2>Inside my workshop</h2></div>
     <p class="lead-p" style="margin-bottom:22px;max-width:70ch">What I'm building right now, what I want to learn next, and what my experiences have taught me so far.</p>
     <div class="tabs reveal">
       <div role="tablist" aria-label="Workshop">
@@ -223,9 +331,9 @@ return in(a) &lt; out(b) &amp;&amp; in(b) &lt; out(a);</pre>
       <div role="tabpanel" id="p-now" aria-labelledby="t-now" tabindex="0">
         <div class="now">
           <div class="item">
-            <p class="tag">Software · Controls <span class="pill done">Live</span></p>
-            <h4>PID flywheel simulator</h4>
-            <p>The interactive demo above. It models a motor with voltage limits and lag, so tuning feels like the real VEX flywheel.</p>
+            <p class="tag">Web · PLC · Controls <span class="pill done">Live</span></p>
+            <h4>Interactive PLC &amp; PID lab</h4>
+            <p>The two demos above: a conveyor running real ladder logic, and a PID flywheel tuner modelled on my VEX shooter.</p>
             <div class="meter live"><span style="width:100%"></span></div>
             <div class="steplabel"><span>Idea</span><span>Design</span><span>Build</span><span>Test</span><span>Live</span></div>
           </div>
@@ -292,7 +400,7 @@ return in(a) &lt; out(b) &amp;&amp; in(b) &lt; out(a);</pre>
 
 <section id="awards">
   <div class="wrap">
-    <div class="sec-head"><span class="tag">06</span><h2>Awards &amp; recognition</h2></div>
+    <div class="sec-head"><span class="tag">07</span><h2>Awards &amp; recognition</h2></div>
     <div class="grid2" style="margin-bottom:20px">
       <figure class="wide" style="margin:0"><img src="img/worlds-medal.jpg" alt="2023 VEX Robotics World Championship medal and badge" loading="lazy" style="max-height:380px;object-fit:cover"><figcaption>2023 VEX Robotics World Championship medal</figcaption></figure>
       <figure class="wide" style="margin:0"><img src="img/certificate.jpg" alt="Certificate of Recognition from the MPP for Brampton East" loading="lazy" style="max-height:380px;object-fit:cover"><figcaption>Certificate of Recognition, March 2023</figcaption></figure>
@@ -309,7 +417,7 @@ return in(a) &lt; out(b) &amp;&amp; in(b) &lt; out(a);</pre>
 
 <section id="leadership">
   <div class="wrap">
-    <div class="sec-head"><span class="tag">07</span><h2>Leadership &amp; community</h2></div>
+    <div class="sec-head"><span class="tag">08</span><h2>Leadership &amp; community</h2></div>
     <div class="grid3">
       <div class="card reveal"><p class="tag">2023 – 2025 · Volunteer</p><h3>VEX IQ Referee</h3><p>Refereed elementary and middle school matches for three seasons and three games (Slapshot, Full Volume and Rapid Relay) at local tournaments and the provincial championship.</p></div>
       <div class="card reveal"><p class="tag">Feb – Dec 2024</p><h3>STEM Mentor, Brampton Robotics</h3><p>Taught students to build and program VEX and LEGO robots in C++ through hands-on design challenges.</p></div>
@@ -323,7 +431,7 @@ return in(a) &lt; out(b) &amp;&amp; in(b) &lt; out(a);</pre>
 
 <section id="skills">
   <div class="wrap">
-    <div class="sec-head"><span class="tag">08</span><h2>Skills</h2></div>
+    <div class="sec-head"><span class="tag">09</span><h2>Skills</h2></div>
     <div class="skills">
       <div><h3>Programming</h3><ul><li>C++</li><li>Python</li><li>PLC ladder logic</li><li>Arduino</li></ul></div>
       <div><h3>Software</h3><ul><li>AutoCAD</li><li>SolidWorks</li><li>Autodesk Inventor</li><li>MATLAB</li><li>Multisim</li><li>Excel</li></ul></div>
@@ -336,7 +444,7 @@ return in(a) &lt; out(b) &amp;&amp; in(b) &lt; out(a);</pre>
 
 <section id="experience">
   <div class="wrap">
-    <div class="sec-head"><span class="tag">09</span><h2>Experience &amp; education</h2></div>
+    <div class="sec-head"><span class="tag">10</span><h2>Experience &amp; education</h2></div>
     <ul class="tl">
       <li><div class="when">2025 – present</div><div><h3>McMaster University</h3><p>BTech, Automation Systems Engineering Technology. Courses include PLC Programming, Instrumentation &amp; Control, Electricity &amp; Electronics II, CAD for Design, Systems Engineering Fundamentals and Object-Oriented Programming.</p></div></li>
       <li><div class="when">May – Aug 2026</div><div><h3>Sales Associate Team Lead, Seasonal · Canadian Tire</h3><p>Organized the seasonal team and assigned daily tasks, while also serving customers on the sales floor.</p></div></li>
@@ -350,7 +458,7 @@ return in(a) &lt; out(b) &amp;&amp; in(b) &lt; out(a);</pre>
 
 <section class="contact" id="contact" aria-labelledby="contact-h">
   <div class="wrap">
-    <p class="tag">10 · Contact</p>
+    <p class="tag">11 · Contact</p>
     <h2 id="contact-h">Let's build<br>something <span>together.</span></h2>
     <div class="grid">
       <div>
@@ -361,6 +469,7 @@ return in(a) &lt; out(b) &amp;&amp; in(b) &lt; out(a);</pre>
             <dt>Interests</dt><dd>Automation · Controls · Robotics · Manufacturing</dd>
             <dt>Location</dt><dd>Hamilton &amp; Brampton, Ontario</dd>
             <dt>Email</dt><dd>grewalprabvir@gmail.com</dd>
+            <dt>Phone</dt><dd><a href="tel:+14163055838">416-305-5838</a></dd>
           </dl>
         </div>
         <div class="quick">
@@ -369,6 +478,8 @@ return in(a) &lt; out(b) &amp;&amp; in(b) &lt; out(a);</pre>
           <a href="https://github.com/prabvirgrewal">GitHub <span aria-hidden="true">↗</span></a>
           <a href="Prabvir_Grewal_Resume.pdf">Resume PDF <span aria-hidden="true">↓</span></a>
           <a href="mailto:grewalprabvir@gmail.com">Email me <span aria-hidden="true">→</span></a>
+          <a href="tel:+14163055838">Call 416-305-5838 <span aria-hidden="true">☎</span></a>
+          <a href="sms:+14163055838">Text me <span aria-hidden="true">✉</span></a>
         </div>
       </div>
       <form class="msg" id="msgForm" novalidate>
@@ -419,10 +530,12 @@ addEventListener('scroll',()=>{const h=document.documentElement;$('#progress').s
 /* reveal */
 if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});$$('.reveal').forEach(el=>io.observe(el))}else $$('.reveal').forEach(el=>el.classList.add('in'));
 
-/* tabs */
-const tabs=$$('[role=tab]');
-function sel(t){tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on})}
-tabs.forEach((t,i)=>{t.addEventListener('click',()=>sel(t));t.addEventListener('keydown',e=>{let j=null;if(e.key==='ArrowRight')j=(i+1)%tabs.length;if(e.key==='ArrowLeft')j=(i-1+tabs.length)%tabs.length;if(e.key==='Home')j=0;if(e.key==='End')j=tabs.length-1;if(j!==null){e.preventDefault();tabs[j].focus();sel(tabs[j])}})});
+/* tabs (scoped per tablist) */
+$$('[role=tablist]').forEach(list=>{
+  const tabs=[...list.querySelectorAll('[role=tab]')];
+  const sel=t=>{tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on});dispatchEvent(new Event('resize'))};
+  tabs.forEach((t,i)=>{t.addEventListener('click',()=>sel(t));t.addEventListener('keydown',e=>{let j=null;if(e.key==='ArrowRight')j=(i+1)%tabs.length;if(e.key==='ArrowLeft')j=(i-1+tabs.length)%tabs.length;if(e.key==='Home')j=0;if(e.key==='End')j=tabs.length-1;if(j!==null){e.preventDefault();tabs[j].focus();sel(tabs[j])}})});
+});
 
 /* filters */
 $$('.filters .chipbtn').forEach(b=>b.addEventListener('click',()=>{
@@ -443,6 +556,102 @@ $('#msgForm').addEventListener('submit',e=>{
   location.href=`mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   $('#formNote').textContent='Your email app should open now. If it doesn\'t, copy my email address and write to me directly.';
 });
+
+
+/* ===== PLC conveyor ===== */
+(function(){
+const svg=$('#ladder'),L=34,R=566;
+const W=(x1,x2,y,id)=>`<line class="w" data-p="${id}" x1="${x1}" y1="${y}" x2="${x2}" y2="${y}"/>`;
+const V=(x,y1,y2,id)=>`<line class="w" data-p="${id}" x1="${x}" y1="${y1}" x2="${x}" y2="${y2}"/>`;
+const C=(cx,y,tag,sub,nc,key)=>`<g class="ct" data-c="${key}"><rect class="hl" x="${cx-16}" y="${y-16}" width="32" height="32"/><line x1="${cx-13}" y1="${y-14}" x2="${cx-13}" y2="${y+14}"/><line x1="${cx+13}" y1="${y-14}" x2="${cx+13}" y2="${y+14}"/>${nc?`<line x1="${cx-9}" y1="${y+12}" x2="${cx+9}" y2="${y-12}"/>`:''}<text x="${cx}" y="${y-22}">${tag}</text><text class="sub" x="${cx}" y="${y+28}">${sub}</text></g>`;
+const K=(cx,y,tag,sub,key)=>`<g class="cl" data-c="${key}"><rect class="hl" x="${cx-16}" y="${y-16}" width="32" height="32"/><path d="M${cx-6} ${y-14} A18 18 0 0 0 ${cx-6} ${y+14}"/><path d="M${cx+6} ${y-14} A18 18 0 0 1 ${cx+6} ${y+14}"/><text x="${cx}" y="${y-22}">${tag}</text><text class="sub" x="${cx}" y="${y+28}">${sub}</text></g>`;
+const RN=(y,n)=>`<text class="rn" x="2" y="${y+4}">${n}</text>`;
+let g=`<line class="rail" x1="${L}" y1="14" x2="${L}" y2="355"/><line class="rail" x1="${R}" y1="14" x2="${R}" y2="355"/>`;
+// rung 0: (START || M) && !STOP -> M
+let y=52,y2=118;
+g+=RN(y,'000')+W(L,87,y,'hot')+C(100,y,'START','I:0/0',0,'start')+W(113,190,y,'r0s')
+ +V(60,y,y2,'hot')+W(60,87,y2,'hot')+C(100,y2,'M','seal-in',0,'m')+W(113,190,y2,'r0m')+V(190,y2,y,'r0m')
+ +W(190,277,y,'r0j')+C(290,y,'STOP','I:0/1',1,'stopc')+W(303,464,y,'r0o')+K(480,y,'M','O:0/0 motor','mcoil')+W(496,R,y,'r0o');
+// rung 1: M -> RUN lamp
+y=192;g+=RN(y,'001')+W(L,87,y,'hot')+C(100,y,'M','motor on',0,'m')+W(113,464,y,'r1')+K(480,y,'RUN','O:0/1 lamp','run');
+// rung 2: PE && M -> CTU
+y=262;g+=RN(y,'002')+W(L,87,y,'hot')+C(100,y,'PE','I:0/2 eye',0,'pe')+W(113,187,y,'r2a')+C(200,y,'M','motor on',0,'m')+W(213,440,y,'r2b')
+ +`<g class="ctu" data-c="ctu"><rect x="440" y="${y-24}" width="82" height="48"/><text x="481" y="${y-8}">CTU C5:0</text><text class="sub" x="481" y="${y+12}" id="accTxt">ACC 0</text></g>`+W(522,R,y,'r2b');
+// rung 3: !M -> STOP lamp
+y=330;g+=RN(y,'003')+W(L,87,y,'hot')+C(100,y,'M','motor on',1,'mnc')+W(113,464,y,'r3')+K(480,y,'STOPPED','O:0/2 lamp','stoplamp');
+svg.innerHTML=g;
+
+const st={start:false,stop:false,M:false,pe:false,prevCnt:false,count:0,ever:false,boxes:[],spawn:0,belt:0};
+const set=(sel,on)=>svg.querySelectorAll(sel).forEach(e=>e.classList.toggle('on',!!on));
+function scan(){
+  const j=st.start||st.M; const out=j&&!st.stop; const wasM=st.M; st.M=out;
+  const cnt=st.pe&&st.M; if(cnt&&!st.prevCnt)st.count++; st.prevCnt=cnt;
+  if(st.M&&!wasM)st.ever=true;
+  set('[data-p=hot]',1);set('[data-c=start],[data-p=r0s]',st.start);set('[data-c=m],[data-p=r0m]',st.M);
+  set('[data-p=r0j]',j);set('[data-c=stopc]',!st.stop);set('[data-p=r0o],[data-c=mcoil]',out);
+  set('[data-p=r1],[data-c=run]',st.M);set('[data-c=pe],[data-p=r2a]',st.pe);set('[data-p=r2b],[data-c=ctu]',cnt);
+  set('[data-c=mnc],[data-p=r3],[data-c=stoplamp]',!st.M);
+  $('#accTxt').textContent='ACC '+st.count;$('#cnt').textContent=st.count;
+  $('#lampRun').classList.toggle('on',st.M);$('#lampStop').classList.toggle('on',!st.M);
+  const ps=$('#plcState');ps.textContent=st.M?'RUNNING':'STOPPED';ps.classList.toggle('run',st.M);
+  let t;
+  if(st.stop) t='STOP is pressed. It is a normally-closed contact, so pressing it opens rung 000 and breaks the seal-in. The motor drops out.';
+  else if(st.start&&!st.M) t='START is held…';
+  else if(st.start) t='START is held. Rung 000 is powered through START, so the motor coil M turns on.';
+  else if(st.M&&st.pe) t='A box is breaking the photo-eye beam. Rung 002 is true, so the up-counter adds one, but only on the rising edge, not every scan.';
+  else if(st.M) t='You let go of START, and the motor kept running. That\'s a seal-in circuit: the M contact on the lower branch holds its own coil on. Press STOP to break it.';
+  else if(st.ever) t='Stopped. M is off, so the normally-closed M contact on rung 003 turns the STOPPED lamp on. Press START to run again.';
+  else t='Tap START to run the conveyor. Watch the ladder: green shows which contacts are closed and where power flows.';
+  const ex=$('#plcExplain');if(ex.textContent!==t)ex.textContent=t;
+}
+const cv=$('#conveyor'),cx=cv.getContext('2d');let last=performance.now(),acc=0,blink=0;
+function frame(now){
+  const dt=Math.min(.05,(now-last)/1000);last=now;
+  const r=cv.getBoundingClientRect();
+  if(r.width>0){
+    const dpr=devicePixelRatio||1;if(cv.width!==Math.round(r.width*dpr)){cv.width=Math.round(r.width*dpr);cv.height=Math.round(r.height*dpr)}
+    cx.setTransform(dpr,0,0,dpr,0,0);
+    const w=r.width,h=r.height,css=getComputedStyle(document.documentElement),c=n=>css.getPropertyValue(n).trim();
+    const speed=w*0.16,beltY=h*.62,eyeX=w*.68,size=Math.max(22,Math.min(34,w*.06));
+    if(st.M){st.belt=(st.belt+speed*dt)%24;st.spawn-=dt;
+      if(st.spawn<=0){st.boxes.push({x:-size,hue:Math.random()<.5?0:1});st.spawn=1.4+Math.random()*.8}
+      st.boxes.forEach(b=>b.x+=speed*dt)}
+    st.boxes=st.boxes.filter(b=>b.x<w+10);
+    st.pe=st.boxes.some(b=>b.x<eyeX&&b.x+size>eyeX);
+    cx.clearRect(0,0,w,h);
+    // frame & belt
+    cx.fillStyle=c('--panel');cx.fillRect(0,0,w,h);
+    cx.strokeStyle=c('--ink');cx.lineWidth=2;
+    cx.beginPath();cx.roundRect?cx.roundRect(16,beltY,w-32,18,9):cx.rect(16,beltY,w-32,18);cx.stroke();
+    cx.strokeStyle=c('--muted');cx.lineWidth=1.5;
+    for(let x=16-24+st.belt;x<w-16;x+=24){if(x>18){cx.beginPath();cx.moveTo(x,beltY+3);cx.lineTo(x,beltY+15);cx.stroke()}}
+    [[25,beltY+9],[w-25,beltY+9]].forEach(([x,y])=>{cx.beginPath();cx.arc(x,y,7,0,7);cx.stroke()});
+    cx.fillStyle=c('--muted');cx.fillRect(30,beltY+18,6,h-beltY-26);cx.fillRect(w-36,beltY+18,6,h-beltY-26);
+    // motor
+    cx.fillStyle=st.M?'#3CD27A':c('--rule');cx.strokeStyle=c('--ink');cx.fillRect(8,beltY+26,26,20);cx.strokeRect(8,beltY+26,26,20);
+    cx.fillStyle=c('--muted');cx.font='10px "IBM Plex Mono",monospace';cx.fillText('MOTOR M',40,beltY+40);
+    // boxes
+    st.boxes.forEach(b=>{cx.fillStyle=b.hue?'#C98A4B':'#B7793D';cx.fillRect(b.x,beltY-size,size,size);cx.strokeStyle=c('--ink');cx.lineWidth=1.5;cx.strokeRect(b.x,beltY-size,size,size);cx.beginPath();cx.moveTo(b.x+size/2,beltY-size);cx.lineTo(b.x+size/2,beltY-size+size*.35);cx.stroke()});
+    // photo eye
+    cx.fillStyle=c('--ink');cx.fillRect(eyeX-6,beltY-size-34,12,14);cx.fillRect(eyeX-6,beltY-4,12,4);
+    cx.strokeStyle=st.pe?'#FF5340':'rgba(255,83,64,.45)';cx.setLineDash(st.pe?[]:[4,4]);cx.lineWidth=st.pe?3:1.5;
+    cx.beginPath();cx.moveTo(eyeX,beltY-size-20);cx.lineTo(eyeX,beltY-4);cx.stroke();cx.setLineDash([]);
+    cx.fillStyle=st.pe?'#FF5340':c('--muted');cx.fillText(st.pe?'PE: BLOCKED':'PE: CLEAR',eyeX+10,beltY-size-24);
+  }
+  acc+=dt;if(acc>=.01){acc=0;scan();if(++blink%20===0)$('#scanLed').classList.toggle('blink')}
+  requestAnimationFrame(frame);
+}
+function hold(btn,key){
+  const dn=e=>{e.preventDefault();st[key]=true;btn.classList.add('down')},up=()=>{st[key]=false;btn.classList.remove('down')};
+  btn.addEventListener('pointerdown',dn);['pointerup','pointerleave','pointercancel'].forEach(ev=>btn.addEventListener(ev,up));
+  btn.addEventListener('keydown',e=>{if(e.key===' '||e.key==='Enter'){if(!st[key])dn(e)}});btn.addEventListener('keyup',e=>{if(e.key===' '||e.key==='Enter')up()});
+  // quick taps: make sure the press lasts at least two scans
+  btn.addEventListener('click',()=>{if(!st[key]){st[key]=true;setTimeout(()=>{if(!btn.classList.contains('down'))st[key]=false},60)}});
+}
+hold($('#btnStart'),'start');hold($('#btnStop'),'stop');
+$('#btnRes').addEventListener('click',()=>{st.count=0});
+scan();requestAnimationFrame(frame);
+})();
 
 /* PID flywheel sim */
 const cv=$('#pidCanvas'),ctx=cv.getContext('2d');
