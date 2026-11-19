@@ -9,35 +9,45 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/site.css">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="progress" aria-hidden="true"></div>
 
 <nav class="top" aria-label="Main">
   <div class="wrap">
     <a class="me" href="#top">PRABVIR GREWAL</a>
     <ul>
-      <li><a href="#about">About</a></li>
+      <li><a href="#why">Why me</a></li>
+      <li><a href="#demo">Demo</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#workshop">Workshop</a></li>
       <li><a href="#awards">Awards</a></li>
-      <li><a href="#leadership">Leadership</a></li>
-      <li><a href="#skills">Skills</a></li>
       <li><a href="#experience">Experience</a></li>
-      <li><a href="#contact">Contact</a></li>
     </ul>
+    <div class="right">
+      <button class="iconbtn" id="theme" type="button" aria-label="Switch light or dark theme">◐</button>
+      <button class="iconbtn menu" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">≡</button>
+      <a class="hire" href="#contact">Contact me</a>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#why">Why me</a><a href="#demo">Demo</a><a href="#projects">Projects</a><a href="#workshop">Workshop</a><a href="#awards">Awards</a><a href="#leadership">Leadership</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
   </div>
 </nav>
 
 <header class="hero" id="top">
   <div class="wrap hero-grid">
     <div>
+      <p class="status"><span class="dot" aria-hidden="true"></span>Open to co-op &amp; summer roles</p>
       <p class="tag">Automation Systems Engineering Student · McMaster University</p>
       <h1>I build robots, circuits and <span>control systems.</span></h1>
       <p class="lede">I'm a second-year Automation Systems Engineering student in Hamilton. I captained a VEX robotics team to the 2023 VEX World Championship in Dallas, and I like the part of engineering where code meets hardware.</p>
       <div class="btns">
-        <a class="btn primary" href="#projects">See projects</a>
-        <a class="btn" href="Prabvir_Grewal_Resume.pdf">Download resume (PDF)</a>
-        <a class="btn" href="https://www.linkedin.com/in/prabvirgrewal">LinkedIn</a>
-        <a class="btn" href="https://github.com/prabvirgrewal">GitHub</a>
+        <a class="btn primary" href="#contact">Let's talk</a>
+        <a class="btn" href="#projects">See projects</a>
+        <a class="btn" href="Prabvir_Grewal_Resume.pdf">Resume (PDF)</a>
       </div>
     </div>
     <dl class="titleblock" aria-label="Quick facts">
@@ -45,6 +55,7 @@
       <div><dt>School</dt><dd>McMaster University, 2025 – 2029</dd></div>
       <div><dt>Focus</dt><dd>Controls · PLCs · Robotics · Embedded</dd></div>
       <div><dt>Seeking</dt><dd>Co-op / summer role in automation or controls</dd></div>
+      <div><dt>Goal</dt><dd>Automation &amp; robotics in advanced manufacturing</dd></div>
       <div><dt>Based</dt><dd>Hamilton &amp; Brampton, ON</dd></div>
     </dl>
   </div>
@@ -60,32 +71,77 @@
   </div>
 </div>
 
-<main>
-<section id="about" class="first">
+<main id="main">
+
+<section id="why" class="first">
   <div class="wrap">
-    <div class="sec-head"><span class="tag">01</span><h2>About</h2></div>
-    <div class="about">
-      <div>
-        <p class="lead-p">I got into engineering through robotics. Before I joined a team I was already building things out of metal and wood, and VEX gave me a place to turn that into real machines.</p>
-        <p>As captain and head builder of VEX Team 1104V, I took a robot that was slow and clunky at our first event and led a full rebuild, all the way to the World Championship. Along the way I learned that most matches are won by planning, testing and attention to detail, not just clever design.</p>
-        <p>At McMaster I'm studying PLC programming, instrumentation and control, electronics and CAD. Outside class I build Arduino projects, referee VEX IQ for younger students, and help run events for student clubs. My goal is to work on automation and robotics at companies like Tesla and Apple.</p>
-      </div>
-      <ul>
-        <li><b>Controls and PLCs</b>Coursework in PLC programming, instrumentation, PID control and electronics</li>
-        <li><b>Hands-on in the shop</b>Laser cutter, CNC, drill press and 3D printing from high school manufacturing</li>
-        <li><b>Robotics leadership</b>VEX captain, FRC mechanical co-lead, and VEX IQ referee</li>
-        <li><b>Clear communicator</b>Taught robotics and tutored math for students of all levels</li>
-      </ul>
+    <div class="sec-head"><span class="tag">01</span><h2>Why hire me, in 30 seconds</h2></div>
+    <div class="why">
+      <article class="card reveal">
+        <span class="num">8th → Worlds</span>
+        <h3>I don't stop at "it works on the bench"</h3>
+        <p>Our first VEX robot was slow and clunky. I led a full rebuild based on what failed, and the new robot took us to the World Championship.</p>
+        <p class="proof">Evidence: 4 design iterations · 141-page engineering notebook · <a href="projects/vex-spin-up.html">case study</a></p>
+      </article>
+      <article class="card reveal">
+        <span class="num">HW + SW</span>
+        <h3>I work where code meets hardware</h3>
+        <p>I write C++ for robots and microcontrollers, design parts in CAD, and make them on the laser cutter, CNC and 3D printer. At McMaster I'm studying PLCs and process control.</p>
+        <p class="proof">Evidence: VEX flywheel control · Arduino state machine · laser-cut solar tracker</p>
+      </article>
+      <article class="card reveal">
+        <span class="num">Team first</span>
+        <h3>I lead, teach and organize</h3>
+        <p>I captained a VEX team, co-led mechanical work on an FRC team, taught kids to code robots, tutored math, and organized a seasonal team at Canadian Tire.</p>
+        <p class="proof">Evidence: captain · 1 of 3 FRC mechanical leads · STEM instructor · team lead</p>
+      </article>
     </div>
+  </div>
+</section>
+
+<section id="demo">
+  <div class="wrap">
+    <div class="sec-head"><span class="tag">02</span><h2>Try it: tune my flywheel</h2></div>
+    <p class="lead-p" style="margin-bottom:22px;max-width:72ch">Our VEX shooter needed its flywheel to hold a steady speed, even after every shot slowed it down. This is a simplified model of that problem. Drag the sliders to tune the PID controller, then watch what happens when a disc is fired at 3 seconds.</p>
+    <div class="pid reveal">
+      <div class="plot">
+        <canvas id="pidCanvas" role="img" aria-label="Chart of flywheel speed over time compared to the target speed"></canvas>
+        <div class="legend"><span><i style="background:var(--muted)"></i>Target 2400 RPM</span><span><i style="background:var(--accent)"></i>Flywheel speed</span><span><i style="background:var(--good)"></i>Motor voltage (0–12 V)</span></div>
+      </div>
+      <div class="ctrl">
+        <div class="presets" role="group" aria-label="Presets">
+          <button class="chipbtn" type="button" data-p="10,0,0">P only</button>
+          <button class="chipbtn" type="button" data-p="5,80,0">Too much I</button>
+          <button class="chipbtn" type="button" data-p="8,20,4" aria-pressed="true">Tuned</button>
+        </div>
+        <div><label for="kp">Kp (proportional) <output id="kpo"></output></label><input id="kp" type="range" min="0" max="30" step="0.5" value="8"></div>
+        <div><label for="ki">Ki (integral) <output id="kio"></output></label><input id="ki" type="range" min="0" max="100" step="1" value="20"></div>
+        <div><label for="kd">Kd (derivative) <output id="kdo"></output></label><input id="kd" type="range" min="0" max="10" step="0.25" value="4"></div>
+        <div class="metrics" aria-live="polite">
+          <div><small>Overshoot</small><b id="mOs">–</b></div>
+          <div><small>Settling time</small><b id="mSt">–</b></div>
+          <div><small>Speed at 2.9 s</small><b id="mSs">–</b></div>
+          <div><small>Recovery after shot</small><b id="mRc">–</b></div>
+        </div>
+        <p class="verdict" id="verdict"></p>
+      </div>
+    </div>
+    <p class="tag" style="margin-top:10px">Model: 12 V motor with electrical and flywheel lag, anti-windup on the integral. A shot drops speed by 30%.</p>
   </div>
 </section>
 
 <section id="projects">
   <div class="wrap">
-    <div class="sec-head"><span class="tag">02</span><h2>Featured projects</h2></div>
-    <p class="lead-p" style="margin-bottom:24px">Each project has a full case study with the design process, code, results and what I learned.</p>
+    <div class="sec-head"><span class="tag">03</span><h2>Featured projects</h2></div>
+    <p class="lead-p" style="margin-bottom:18px">Each project has a full case study with the design process, code, results and what I learned.</p>
+    <div class="filters" role="group" aria-label="Filter projects">
+      <button class="chipbtn" type="button" data-f="all" aria-pressed="true">All</button>
+      <button class="chipbtn" type="button" data-f="robotics" aria-pressed="false">Robotics</button>
+      <button class="chipbtn" type="button" data-f="embedded" aria-pressed="false">Embedded / Arduino</button>
+      <button class="chipbtn" type="button" data-f="software" aria-pressed="false">Software</button>
+    </div>
     <div class="cards">
-      <article class="pcard">
+      <article class="pcard reveal" data-cat="robotics software">
         <img src="img/vex-worlds-1.jpg" alt="VEX Spin Up robot with flywheel shooter" loading="lazy">
         <div class="body">
           <p class="tag">VEX Robotics · 2022 – 2023 <span class="pill done">Worlds</span></p>
@@ -95,7 +151,7 @@
           <a class="more" href="projects/vex-spin-up.html">Read the case study →</a>
         </div>
       </article>
-      <article class="pcard">
+      <article class="pcard reveal" data-cat="robotics embedded">
         <img src="img/line-1.jpg" alt="Line-following robot with ultrasonic sensor" loading="lazy">
         <div class="body">
           <p class="tag">Arduino · Solo · 2025 <span class="pill done">Built</span></p>
@@ -105,7 +161,7 @@
           <a class="more" href="projects/line-follower.html">Read the case study →</a>
         </div>
       </article>
-      <article class="pcard">
+      <article class="pcard reveal" data-cat="embedded">
         <img src="img/solar-1.jpg" alt="Solar-tracking phone charger" loading="lazy">
         <div class="body">
           <p class="tag">Computer Engineering · 2024 <span class="pill done">Built</span></p>
@@ -115,7 +171,7 @@
           <a class="more" href="projects/solar-tracker.html">Read the case study →</a>
         </div>
       </article>
-      <article class="pcard">
+      <article class="pcard reveal" data-cat="software">
         <div class="body">
           <p class="tag">McMaster · ENGTECH 1PR3 · Team of 3 <span class="pill done">Built</span></p>
           <h3>Hotel Reservation System</h3>
@@ -132,8 +188,7 @@ return in(a) &lt; out(b) &amp;&amp; in(b) &lt; out(a);</pre>
 
 <section id="more">
   <div class="wrap">
-    <div class="sec-head"><span class="tag">03</span><h2>More builds</h2></div>
-
+    <div class="sec-head"><span class="tag">04</span><h2>More builds</h2></div>
     <h3 style="font-size:26px;margin-bottom:6px">FRC Rapid React Robot <span class="pill done">Competed</span></h3>
     <p class="tag" style="margin-bottom:12px">FIRST Robotics Competition · 2021 – 2023 · Mechanical co-lead (1 of 3)</p>
     <p style="max-width:68ch">One of three mechanical leads on a FIRST Robotics Competition team. For the 2022 game, Rapid React, the robot collected and shot cargo balls and climbed a hangar at the end of each match. We competed at the 2022 Ontario District St. Mary event in Hamilton.</p>
@@ -141,28 +196,103 @@ return in(a) &lt; out(b) &amp;&amp; in(b) &lt; out(a);</pre>
       <figure><img src="img/frc-1.jpg" alt="FRC robot with red intake and climbing hooks" loading="lazy"><figcaption>Intake, shooter and climber</figcaption></figure>
       <figure><img src="img/frc-2.jpg" alt="FRC robot from the front" loading="lazy"><figcaption>Front view</figcaption></figure>
     </div>
-
     <h3 style="font-size:26px;margin-bottom:6px">Arduino Circuit Builds <span class="pill done">Built</span></h3>
     <p class="tag" style="margin-bottom:12px">Breadboard prototyping · Arduino Uno · C++</p>
     <p style="max-width:68ch">A series of microcontroller circuits, each adding a new input or output: digital inputs, analog reads, PWM and servo control.</p>
-    <div class="gallery tall" style="margin-bottom:40px">
+    <div class="gallery tall">
       <figure><video src="media/arduino-servo.mp4" autoplay muted loop playsinline aria-label="Potentiometer turning a servo"></video><figcaption>Potentiometer → servo angle (analog in, PWM out)</figcaption></figure>
       <figure><video src="media/arduino-buttons.mp4" autoplay muted loop playsinline aria-label="Four push buttons lighting LEDs"></video><figcaption>Multi-button LED game (digital inputs)</figcaption></figure>
       <figure><video src="media/arduino-dimmer.mp4" autoplay muted loop playsinline aria-label="Potentiometer dimming an LED"></video><figcaption>LED dimmer (analogRead → PWM)</figcaption></figure>
       <figure><video src="media/arduino-buzzer.mp4" autoplay muted loop playsinline aria-label="Potentiometer changing a buzzer tone"></video><figcaption>Potentiometer-controlled buzzer</figcaption></figure>
     </div>
+  </div>
+</section>
 
-    <div class="card next">
-      <p class="tag">Next build <span class="pill wip">In progress</span></p>
-      <h3>PID Control Projects</h3>
-      <p>An interactive PID controller simulator and an Arduino temperature and fan controller, using what I'm learning in Instrumentation &amp; Control and PLC Programming at McMaster.</p>
+<section id="workshop">
+  <div class="wrap">
+    <div class="sec-head"><span class="tag">05</span><h2>Inside my workshop</h2></div>
+    <p class="lead-p" style="margin-bottom:22px;max-width:70ch">What I'm building right now, what I want to learn next, and what my experiences have taught me so far.</p>
+    <div class="tabs reveal">
+      <div role="tablist" aria-label="Workshop">
+        <button role="tab" id="t-now" aria-controls="p-now" aria-selected="true"><span class="tab-n">A</span>Now building</button>
+        <button role="tab" id="t-learn" aria-controls="p-learn" aria-selected="false" tabindex="-1"><span class="tab-n">B</span>Learning next</button>
+        <button role="tab" id="t-lessons" aria-controls="p-lessons" aria-selected="false" tabindex="-1"><span class="tab-n">C</span>Lessons learned</button>
+        <button role="tab" id="t-how" aria-controls="p-how" aria-selected="false" tabindex="-1"><span class="tab-n">D</span>How I work</button>
+      </div>
+
+      <div role="tabpanel" id="p-now" aria-labelledby="t-now" tabindex="0">
+        <div class="now">
+          <div class="item">
+            <p class="tag">Software · Controls <span class="pill done">Live</span></p>
+            <h4>PID flywheel simulator</h4>
+            <p>The interactive demo above. It models a motor with voltage limits and lag, so tuning feels like the real VEX flywheel.</p>
+            <div class="meter live"><span style="width:100%"></span></div>
+            <div class="steplabel"><span>Idea</span><span>Design</span><span>Build</span><span>Test</span><span>Live</span></div>
+          </div>
+          <div class="item">
+            <p class="tag">Embedded · Controls <span class="pill wip">Up next</span></p>
+            <h4>Arduino temperature &amp; fan controller</h4>
+            <p>A temperature sensor and a PWM fan in a closed loop, so I can tune a real PID controller on hardware, not just in a simulation.</p>
+            <div class="meter"><span style="width:30%"></span></div>
+            <div class="steplabel"><span>Idea</span><span>Design</span><span>Build</span><span>Test</span><span>Live</span></div>
+          </div>
+          <div class="item">
+            <p class="tag">McMaster · This term <span class="pill wip">In progress</span></p>
+            <h4>PLC programming &amp; process control</h4>
+            <p>Ladder logic in PROCTECH 2PL3, and temperature sensors and PID control in PROCTECH 2IC3 Instrumentation &amp; Process Control.</p>
+            <div class="meter"><span style="width:60%"></span></div>
+            <div class="steplabel"><span>Term start</span><span></span><span></span><span></span><span>Exams</span></div>
+          </div>
+          <div class="item">
+            <p class="tag">McMaster · This term <span class="pill wip">In progress</span></p>
+            <h4>Electronics labs: diodes &amp; transistors</h4>
+            <p>Building and measuring diode and BJT circuits on the bench with oscilloscopes and multimeters in PROCTECH 2EE3.</p>
+            <div class="meter"><span style="width:60%"></span></div>
+            <div class="steplabel"><span>Term start</span><span></span><span></span><span></span><span>Exams</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div role="tabpanel" id="p-learn" aria-labelledby="t-learn" tabindex="0" hidden>
+        <ul class="learn">
+          <li><b>Industrial PLCs &amp; HMIs</b><p>Go past ladder basics to structured text, timers and counters at scale, and building operator screens for a real machine.</p><span class="lvl">Started in class</span></li>
+          <li><b>Industrial robot arms</b><p>Program a 6-axis robot for pick-and-place, the core of automated assembly lines.</p><span class="lvl">Next goal</span></li>
+          <li><b>Machine vision</b><p>Use cameras to inspect parts and guide robots, so a line can catch defects on its own.</p><span class="lvl">Next goal</span></li>
+          <li><b>Embedded C on newer boards</b><p>Move from Arduino to ESP32 or STM32: interrupts, timers and wireless data.</p><span class="lvl">Next goal</span></li>
+          <li><b>Python for test &amp; data</b><p>Log sensor data, plot it and automate tests, instead of reading numbers off a serial monitor.</p><span class="lvl">Some experience</span></li>
+          <li><b>Advanced SolidWorks &amp; GD&amp;T</b><p>Design parts that are ready for manufacturing, with proper tolerances and drawings.</p><span class="lvl">Some experience</span></li>
+        </ul>
+      </div>
+
+      <div role="tabpanel" id="p-lessons" aria-labelledby="t-lessons" tabindex="0" hidden>
+        <div class="lessons">
+          <div class="lesson"><p class="tag">VEX Robotics · Captain</p><q>Fail early, then rebuild with data.</q><p>Robot 1 was a mess, but writing down exactly why it failed gave us clear requirements for the rebuild that took us to Worlds.</p></div>
+          <div class="lesson"><p class="tag">VEX Robotics · Testing</p><q>Test the whole system, not just the parts.</q><p>Our expansion worked on the bench and failed in matches because we added it too late to test with everything else.</p></div>
+          <div class="lesson"><p class="tag">VEX Robotics · Flywheel</p><q>Mechanical and software problems are linked.</q><p>The flywheel's speed drop needed both better mechanics and closed-loop control to fix.</p></div>
+          <div class="lesson"><p class="tag">Line-Following Robot</p><q>Calibration matters as much as the code.</q><p>The same program behaved completely differently until the sensors were calibrated for the floor and the lighting.</p></div>
+          <div class="lesson"><p class="tag">Brampton Robotics · Instructor</p><q>If I can't explain it simply, I don't really understand it.</q><p>Teaching kids to code robots made me break ideas down into small, clear steps.</p></div>
+          <div class="lesson"><p class="tag">MathSKape · Tutor</p><q>Different people need different explanations.</q><p>Tutoring students across Ontario taught me to change my approach until it clicks for the person in front of me.</p></div>
+          <div class="lesson"><p class="tag">VEX IQ · Referee</p><q>Stay calm and be consistent.</q><p>Refereeing three seasons of matches meant making fast, fair calls under pressure and explaining them clearly.</p></div>
+          <div class="lesson"><p class="tag">Canadian Tire · Team Lead</p><q>A clear plan makes the whole team faster.</q><p>Organizing the seasonal team and assigning tasks showed me how much smoother a shift runs when everyone knows their job.</p></div>
+        </div>
+      </div>
+
+      <div role="tabpanel" id="p-how" aria-labelledby="t-how" tabindex="0" hidden>
+        <div class="process">
+          <div><h4>Define</h4><p>Read the rules or requirements, then list what the design must do and how I'll measure it.</p></div>
+          <div><h4>Explore</h4><p>Brainstorm options and compare them. On VEX we used the SPICE design process.</p></div>
+          <div><h4>Build</h4><p>Prototype fast: CAD, then the laser cutter, 3D printer or breadboard.</p></div>
+          <div><h4>Test</h4><p>Test the whole system under real conditions, log the results, and fix the biggest problem first.</p></div>
+          <div><h4>Document</h4><p>Write it down. Our VEX notebook reached 141 pages, and every project here has a case study.</p></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <section id="awards">
   <div class="wrap">
-    <div class="sec-head"><span class="tag">04</span><h2>Awards &amp; recognition</h2></div>
+    <div class="sec-head"><span class="tag">06</span><h2>Awards &amp; recognition</h2></div>
     <div class="grid2" style="margin-bottom:20px">
       <figure class="wide" style="margin:0"><img src="img/worlds-medal.jpg" alt="2023 VEX Robotics World Championship medal and badge" loading="lazy" style="max-height:380px;object-fit:cover"><figcaption>2023 VEX Robotics World Championship medal</figcaption></figure>
       <figure class="wide" style="margin:0"><img src="img/certificate.jpg" alt="Certificate of Recognition from the MPP for Brampton East" loading="lazy" style="max-height:380px;object-fit:cover"><figcaption>Certificate of Recognition, March 2023</figcaption></figure>
@@ -179,21 +309,21 @@ return in(a) &lt; out(b) &amp;&amp; in(b) &lt; out(a);</pre>
 
 <section id="leadership">
   <div class="wrap">
-    <div class="sec-head"><span class="tag">05</span><h2>Leadership &amp; community</h2></div>
+    <div class="sec-head"><span class="tag">07</span><h2>Leadership &amp; community</h2></div>
     <div class="grid3">
-      <div class="card"><p class="tag">2023 – 2025 · Volunteer</p><h3>VEX IQ Referee</h3><p>Refereed elementary and middle school matches for three seasons and three games (Slapshot, Full Volume and Rapid Relay) at local tournaments and the provincial championship.</p></div>
-      <div class="card"><p class="tag">Feb – Dec 2024</p><h3>STEM Mentor, Brampton Robotics</h3><p>Taught students to build and program VEX and LEGO robots in C++ through hands-on design challenges.</p></div>
-      <div class="card"><p class="tag">2022 – 2023</p><h3>Girl Powered Outreach</h3><p>With my VEX team, ran a Girl Powered robotics event with a local library to make STEM more accessible.</p></div>
-      <div class="card"><p class="tag">McMaster</p><h3>Events Executive Rep, McMaster School of Bhangra</h3><p>Part of the events team for McMaster's bhangra club.</p></div>
-      <div class="card"><p class="tag">Sep 2025 – Apr 2026</p><h3>First-Year Rep, McMaster Punjabi Association</h3><p>Represented first-year students, gathered feedback and shared it with the executive team.</p></div>
-      <div class="card"><p class="tag">2021 – 2023</p><h3>FRC Mechanical Co-Lead</h3><p>One of three mechanical leads on a FIRST Robotics Competition team.</p></div>
+      <div class="card reveal"><p class="tag">2023 – 2025 · Volunteer</p><h3>VEX IQ Referee</h3><p>Refereed elementary and middle school matches for three seasons and three games (Slapshot, Full Volume and Rapid Relay) at local tournaments and the provincial championship.</p></div>
+      <div class="card reveal"><p class="tag">Feb – Dec 2024</p><h3>STEM Mentor, Brampton Robotics</h3><p>Taught students to build and program VEX and LEGO robots in C++ through hands-on design challenges.</p></div>
+      <div class="card reveal"><p class="tag">2022 – 2023</p><h3>Girl Powered Outreach</h3><p>With my VEX team, ran a Girl Powered robotics event with a local library to make STEM more accessible.</p></div>
+      <div class="card reveal"><p class="tag">McMaster</p><h3>Events Executive Rep, McMaster School of Bhangra</h3><p>Part of the events team for McMaster's bhangra club.</p></div>
+      <div class="card reveal"><p class="tag">Sep 2025 – Apr 2026</p><h3>First-Year Rep, McMaster Punjabi Association</h3><p>Represented first-year students, gathered feedback and shared it with the executive team.</p></div>
+      <div class="card reveal"><p class="tag">2021 – 2023</p><h3>FRC Mechanical Co-Lead</h3><p>One of three mechanical leads on a FIRST Robotics Competition team.</p></div>
     </div>
   </div>
 </section>
 
 <section id="skills">
   <div class="wrap">
-    <div class="sec-head"><span class="tag">06</span><h2>Skills</h2></div>
+    <div class="sec-head"><span class="tag">08</span><h2>Skills</h2></div>
     <div class="skills">
       <div><h3>Programming</h3><ul><li>C++</li><li>Python</li><li>PLC ladder logic</li><li>Arduino</li></ul></div>
       <div><h3>Software</h3><ul><li>AutoCAD</li><li>SolidWorks</li><li>Autodesk Inventor</li><li>MATLAB</li><li>Multisim</li><li>Excel</li></ul></div>
@@ -206,7 +336,7 @@ return in(a) &lt; out(b) &amp;&amp; in(b) &lt; out(a);</pre>
 
 <section id="experience">
   <div class="wrap">
-    <div class="sec-head"><span class="tag">07</span><h2>Experience &amp; education</h2></div>
+    <div class="sec-head"><span class="tag">09</span><h2>Experience &amp; education</h2></div>
     <ul class="tl">
       <li><div class="when">2025 – present</div><div><h3>McMaster University</h3><p>BTech, Automation Systems Engineering Technology. Courses include PLC Programming, Instrumentation &amp; Control, Electricity &amp; Electronics II, CAD for Design, Systems Engineering Fundamentals and Object-Oriented Programming.</p></div></li>
       <li><div class="when">May – Aug 2026</div><div><h3>Sales Associate Team Lead, Seasonal · Canadian Tire</h3><p>Organized the seasonal team and assigned daily tasks, while also serving customers on the sales floor.</p></div></li>
@@ -218,19 +348,154 @@ return in(a) &lt; out(b) &amp;&amp; in(b) &lt; out(a);</pre>
 </section>
 </main>
 
-<footer id="contact">
+<section class="contact" id="contact" aria-labelledby="contact-h">
   <div class="wrap">
-    <div>
-      <h2>Let's talk.</h2>
-      <p>Looking for a co-op or summer role in automation, controls or manufacturing.</p>
-      <div class="btns" style="margin-top:14px"><a class="btn primary" href="Prabvir_Grewal_Resume.pdf">Download resume (PDF)</a></div>
-    </div>
-    <div>
-      <p>Email: <a href="mailto:grewalprabvir@gmail.com">grewalprabvir@gmail.com</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/prabvirgrewal">linkedin.com/in/prabvirgrewal</a></p>
-      <p>GitHub: <a href="https://github.com/prabvirgrewal">github.com/prabvirgrewal</a></p>
+    <p class="tag">10 · Contact</p>
+    <h2 id="contact-h">Let's build<br>something <span>together.</span></h2>
+    <div class="grid">
+      <div>
+        <p class="lead">I'm looking for a co-op or summer role in automation, controls, robotics or manufacturing. If you're hiring, building something interesting, or just want to talk robots, I'd love to hear from you.</p>
+        <div class="cbox">
+          <dl>
+            <dt>Status</dt><dd><span class="dot" style="display:inline-block;margin-right:8px"></span>Open to co-op &amp; summer roles</dd>
+            <dt>Interests</dt><dd>Automation · Controls · Robotics · Manufacturing</dd>
+            <dt>Location</dt><dd>Hamilton &amp; Brampton, Ontario</dd>
+            <dt>Email</dt><dd>grewalprabvir@gmail.com</dd>
+          </dl>
+        </div>
+        <div class="quick">
+          <button type="button" id="copyEmail" class="wide">Copy my email address <span aria-hidden="true">⧉</span></button>
+          <a href="https://www.linkedin.com/in/prabvirgrewal">LinkedIn <span aria-hidden="true">↗</span></a>
+          <a href="https://github.com/prabvirgrewal">GitHub <span aria-hidden="true">↗</span></a>
+          <a href="Prabvir_Grewal_Resume.pdf">Resume PDF <span aria-hidden="true">↓</span></a>
+          <a href="mailto:grewalprabvir@gmail.com">Email me <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <form class="msg" id="msgForm" novalidate>
+        <h3>Send me a message</h3>
+        <p class="tag" style="margin:0">Takes about a minute</p>
+        <label>What's it about?</label>
+        <div class="reasons" role="group" aria-label="Reason for contact">
+          <button class="chipbtn" type="button" aria-pressed="true">Co-op / internship</button>
+          <button class="chipbtn" type="button" aria-pressed="false">Full-time role</button>
+          <button class="chipbtn" type="button" aria-pressed="false">Project idea</button>
+          <button class="chipbtn" type="button" aria-pressed="false">Robotics / mentoring</button>
+          <button class="chipbtn" type="button" aria-pressed="false">Just saying hi</button>
+        </div>
+        <div class="row">
+          <div><label for="fName">Your name</label><input id="fName" name="name" autocomplete="name" required></div>
+          <div><label for="fOrg">Company or school</label><input id="fOrg" name="org" autocomplete="organization"></div>
+        </div>
+        <label for="fMsg">Message</label>
+        <textarea id="fMsg" name="message" required placeholder="Tell me about the role or project…"></textarea>
+        <button class="btn primary" type="submit">Write the email →</button>
+        <p class="note" id="formNote">Opens your email app with this message ready to send to me.</p>
+      </form>
     </div>
   </div>
+</section>
+<footer class="mini">
+  <div class="wrap"><span>© 2026 Prabvir Grewal · Hamilton, ON</span><span><a href="#top">Back to top ↑</a></span></div>
 </footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const toast=msg=>{const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('show'),2200)};
+
+/* theme */
+$('#theme').addEventListener('click',()=>{
+  const cur=document.documentElement.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+  const next=cur==='dark'?'light':'dark';document.documentElement.dataset.theme=next;
+  try{localStorage.setItem('theme',next)}catch(e){} draw();
+});
+/* mobile menu */
+const mb=$('#menuBtn'),mm=$('#mobileMenu');
+mb.addEventListener('click',()=>{const o=mm.classList.toggle('open');mb.setAttribute('aria-expanded',o)});
+mm.addEventListener('click',e=>{if(e.target.tagName==='A'){mm.classList.remove('open');mb.setAttribute('aria-expanded','false')}});
+/* progress */
+addEventListener('scroll',()=>{const h=document.documentElement;$('#progress').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'},{passive:true});
+/* reveal */
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});$$('.reveal').forEach(el=>io.observe(el))}else $$('.reveal').forEach(el=>el.classList.add('in'));
+
+/* tabs */
+const tabs=$$('[role=tab]');
+function sel(t){tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on})}
+tabs.forEach((t,i)=>{t.addEventListener('click',()=>sel(t));t.addEventListener('keydown',e=>{let j=null;if(e.key==='ArrowRight')j=(i+1)%tabs.length;if(e.key==='ArrowLeft')j=(i-1+tabs.length)%tabs.length;if(e.key==='Home')j=0;if(e.key==='End')j=tabs.length-1;if(j!==null){e.preventDefault();tabs[j].focus();sel(tabs[j])}})});
+
+/* filters */
+$$('.filters .chipbtn').forEach(b=>b.addEventListener('click',()=>{
+  $$('.filters .chipbtn').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  const f=b.dataset.f;$$('.cards .pcard').forEach(c=>c.hidden=!(f==='all'||c.dataset.cat.split(' ').includes(f)));
+}));
+
+/* contact */
+$$('.reasons .chipbtn').forEach(b=>b.addEventListener('click',()=>$$('.reasons .chipbtn').forEach(x=>x.setAttribute('aria-pressed',x===b))));
+const EMAIL='grewalprabvir@gmail.com';
+$('#copyEmail').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(EMAIL);toast('Email copied: '+EMAIL)}catch(e){toast(EMAIL)}});
+$('#msgForm').addEventListener('submit',e=>{
+  e.preventDefault();const n=$('#fName').value.trim(),o=$('#fOrg').value.trim(),m=$('#fMsg').value.trim();
+  if(!n||!m){$('#formNote').textContent='Please add your name and a message.';(n?$('#fMsg'):$('#fName')).focus();return}
+  const r=($('.reasons [aria-pressed=true]')||{}).textContent||'Hello';
+  const subject=`${r} – from ${n}${o?' ('+o+')':''}`;
+  const body=`Hi Prabvir,\n\n${m}\n\n– ${n}${o?'\n'+o:''}`;
+  location.href=`mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  $('#formNote').textContent='Your email app should open now. If it doesn\'t, copy my email address and write to me directly.';
+});
+
+/* PID flywheel sim */
+const cv=$('#pidCanvas'),ctx=cv.getContext('2d');
+const kp=$('#kp'),ki=$('#ki'),kd=$('#kd'),SP=2400,DT=0.002,T=5,SHOT=3;
+function sim(Kp,Ki,Kd){
+  const K=300,t1=.5,t2=.12;let w=0,x=0,I=0,pw=0,fired=false;const W=[],U=[];
+  for(let i=0;i<T/DT;i++){const t=i*DT;
+    if(t>=SHOT&&!fired){w*=.7;x*=.7;pw=w;fired=true}
+    const e=SP-w,d=-(w-pw)/DT;pw=w;const In=I+e*DT;let u=Kp*e+Ki*In+Kd*d;
+    if(u>0&&u<12)I=In; u=Math.max(0,Math.min(12,u));
+    x+=DT*(K*u-x)/t2;w+=DT*(x-w)/t1;W.push(w);U.push(u)}
+  return {W,U}
+}
+function settle(arr,off){for(let i=0;i<arr.length;i++){let ok=true;for(let j=i;j<arr.length;j++)if(Math.abs(arr[j]-SP)>.02*SP){ok=false;i=j;break}if(ok)return i*DT}return null}
+let last;
+function draw(){
+  const r=cv.getBoundingClientRect(),dpr=devicePixelRatio||1;cv.width=r.width*dpr;cv.height=r.height*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+  const css=getComputedStyle(document.documentElement),c=n=>css.getPropertyValue(n).trim();
+  const w=r.width,h=r.height,L=46,R=10,Tp=10,B=26,pw=w-L-R,ph=h-Tp-B,ymax=3200;
+  ctx.clearRect(0,0,w,h);ctx.font='11px "IBM Plex Mono",monospace';ctx.fillStyle=c('--muted');ctx.strokeStyle=c('--rule');ctx.lineWidth=1;
+  for(let v=0;v<=3200;v+=800){const y=Tp+ph-v/ymax*ph;ctx.beginPath();ctx.moveTo(L,y);ctx.lineTo(w-R,y);ctx.stroke();ctx.fillText(v,4,y+4)}
+  for(let s=0;s<=5;s++){const x=L+s/5*pw;ctx.fillText(s+' s',x-8,h-8)}
+  const xs=L+SHOT/T*pw;ctx.setLineDash([3,4]);ctx.beginPath();ctx.moveTo(xs,Tp);ctx.lineTo(xs,Tp+ph);ctx.stroke();ctx.fillText('disc fired',xs+4,Tp+12);
+  ctx.strokeStyle=c('--muted');ctx.beginPath();const ys=Tp+ph-SP/ymax*ph;ctx.moveTo(L,ys);ctx.lineTo(w-R,ys);ctx.stroke();ctx.setLineDash([]);
+  if(!last)return;const n=last.W.length,step=Math.max(1,Math.floor(n/pw/1.5));
+  ctx.strokeStyle=c('--good');ctx.globalAlpha=.55;ctx.lineWidth=1.25;ctx.beginPath();
+  for(let i=0;i<n;i+=step){const x=L+i/n*pw,y=Tp+ph-last.U[i]/12*ph*.35;i?ctx.lineTo(x,y):ctx.moveTo(x,y)}ctx.stroke();ctx.globalAlpha=1;
+  ctx.strokeStyle=c('--accent');ctx.lineWidth=2.5;ctx.beginPath();
+  for(let i=0;i<n;i+=step){const x=L+i/n*pw,y=Tp+ph-Math.min(last.W[i],ymax)/ymax*ph;i?ctx.lineTo(x,y):ctx.moveTo(x,y)}ctx.stroke();
+}
+function run(fromPreset){
+  const P=+kp.value,Ii=+ki.value,D=+kd.value;
+  $('#kpo').textContent=(P/1000).toFixed(4);$('#kio').textContent=(Ii/1000).toFixed(3);$('#kdo').textContent=(D/10000).toFixed(5);
+  if(!fromPreset)$$('.presets .chipbtn').forEach(b=>b.setAttribute('aria-pressed',b.dataset.p===[P,Ii,D].join(',')));
+  last=sim(P/1000,Ii/1000,D/10000);const pre=last.W.slice(0,SHOT/DT),post=last.W.slice(SHOT/DT);
+  const os=Math.max(...pre)/SP*100-100,st=settle(pre),rc=settle(post),ss=pre[pre.length-1];
+  const set=(id,txt,good)=>{const b=$(id);b.textContent=txt;b.className=good?'ok':'bad'};
+  set('#mOs',os>0.05?os.toFixed(1)+'%':'0%',os<5);
+  set('#mSt',st===null?'never':st.toFixed(2)+' s',st!==null&&st<1.2);
+  set('#mSs',Math.round(ss)+' RPM',Math.abs(ss-SP)<.02*SP);
+  set('#mRc',rc===null?'never':rc.toFixed(2)+' s',rc!==null&&rc<1.3);
+  let v;
+  if(Ii===0&&Math.abs(ss-SP)>.02*SP)v='With P only, the flywheel never reaches its target. The motor needs some voltage to hold speed, and P only gives voltage when there is error. Add some Ki.';
+  else if(st===null||os>8)v='Too aggressive: the speed overshoots and oscillates. Shots fired now would land at different distances. Lower Ki or add Kd.';
+  else if(rc!==null&&rc<1.3&&st<1.2)v='Nice tune: quick to reach speed, little overshoot, and it recovers fast after each shot. That means consistent shots.';
+  else v='Close. Try balancing response speed against overshoot.';
+  $('#verdict').textContent=v;draw();
+}
+$$('.presets .chipbtn').forEach(b=>b.addEventListener('click',()=>{const [p,i,d]=b.dataset.p.split(',');kp.value=p;ki.value=i;kd.value=d;$$('.presets .chipbtn').forEach(x=>x.setAttribute('aria-pressed',x===b));run(true)}));
+[kp,ki,kd].forEach(s=>s.addEventListener('input',()=>run()));
+addEventListener('resize',draw);matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',draw);
+run(true);
+})();
+</script>
 </body>
 </html>
